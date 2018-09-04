@@ -69,10 +69,8 @@
 
 /* Image */
 .logo {
-    margin-left: 150px;
-    margin-top: -8px;
-    right: 4px;
-    top: -9px;
+    position: fixed;
+    margin-left: 11%;
     width: 792px;
     height: 619px;
     display: block;
