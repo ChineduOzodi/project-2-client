@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
+import { AnimateComponent } from './animate/animate.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
     UserDashboardComponent,
     LoginComponent,
     CartComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    AnimateComponent
   ],
   imports: [
     BrowserModule,
