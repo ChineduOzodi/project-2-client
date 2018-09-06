@@ -2,7 +2,7 @@ import { MaterialModule } from './material';
 import { LoginComponent } from './Pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RegistrationComponent } from './Pages/registration/registration.component';
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './Components/recipe/recipe.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
@@ -22,7 +22,8 @@ import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
     UserDashboardComponent,
     LoginComponent,
     CartComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
