@@ -3,6 +3,8 @@ import { CognitoService } from '@caliatys/cognito-service';
 import { CognitoConst } from '../../cognito.const';
 import { RespType } from '@caliatys/cognito-service'; // Enum used to identify the responses (onSucces, onFailure, ...)
 import { AuthType } from '@caliatys/cognito-service'; // Enum used to identify the providers (google, facebook, ...)
+import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-registration',
@@ -10,6 +12,7 @@ import { AuthType } from '@caliatys/cognito-service'; // Enum used to identify t
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+
 
   public cognitoService: CognitoService = new CognitoService(CognitoConst);
 
