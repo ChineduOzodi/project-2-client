@@ -1,7 +1,6 @@
 .logo {
-    margin-top: 21px;
-    margin-left: 350px;
-    top: -9px;
+    margin-top: -13.7%;
+    
     width: 396px;
     height: 576px;
     display: block;
@@ -9,4 +8,13 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 1px solid transparent;
+}
+
+.jumbotron {
+    position: fixed;
+    margin-top: 1%;
+    margin-left: 22%;
+    height: 97%;
+    background-color: #ffffff00;
+    
 }

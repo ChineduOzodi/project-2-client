@@ -2,7 +2,6 @@ import { MaterialModule } from './material';
 import { LoginComponent } from './Pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './Components/recipe/recipe.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
@@ -13,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
+import { AnimateComponent } from './animate/animate.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
     UserDashboardComponent,
     LoginComponent,
     CartComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    AnimateComponent
   ],
   imports: [
     BrowserModule,
