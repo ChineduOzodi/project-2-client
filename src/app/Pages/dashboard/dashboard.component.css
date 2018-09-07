@@ -2,15 +2,28 @@
     background: url(https://www.toptal.com/designers/subtlepatterns/patterns/textured_paper.png);
 }
 
+#center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 8in;
+    height: 6in;
+}
 
 #center2 {
     position: absolute;
-    margin-left: -5%;
-    margin-top: -6%;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
     left: 9in;
     width: 1in;
     height: 6in;
     z-index: -6;
+    display: block;
 }
 
 .tabs {
@@ -56,7 +69,10 @@
 
 /* Image */
 .logo {
-    margin-top: -10%;    
+    margin-left: 150px;
+    margin-top: -8px;
+    right: 4px;
+    top: -9px;
     width: 792px;
     height: 619px;
     display: block;
@@ -64,14 +80,5 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 1px solid transparent;
+    z-index: -5;
 }
-
-/* Jumbotron */
-.jumbotron {
-    position: fixed;
-    margin-top: 1%;
-    margin-left: 7.5%;
-    height: 97%;
-    background-color: #ffffff00;
-}
-
