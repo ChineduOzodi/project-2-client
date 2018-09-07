@@ -1,1 +1,9 @@
-<a routerLink="/home" class="logo"></a>
+<div class="container">
+    <div class=jumbotron>
+        
+        <!-- onclick, state will be changed to state2, which will allow the image to translate to the right  -->
+        <a [@changeState]="state" (click)="animateMe()" class="logo">
+            <!-- Binding the input property, currentState, to toState -->
+        </a>
+    </div>
+</div>
