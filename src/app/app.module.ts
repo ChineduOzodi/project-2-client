@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { AnimateComponent } from './animate/animate.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
