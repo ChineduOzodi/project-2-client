@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition, group } from '@angular/animations';
 import { Router, Routes } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-
-
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-login',
