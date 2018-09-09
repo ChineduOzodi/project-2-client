@@ -46,10 +46,22 @@ export class FrontpageComponent implements OnInit {
     this.switchPage();
   }
 
+  registerMe() {
+    this.state = 'state2';
+    this.switchToRegist();
+  }
+
   // function to re-route in ___ milliseconds
   switchPage() {
     setTimeout(() => {
       this.router.navigate(['/login'], )}
+      , 1500);
+  }
+
+  // function to go to the registration page
+  switchToRegist() {
+    setTimeout(() => {
+      this.router.navigate(['/registration'], )}
       , 1500);
   }
 
