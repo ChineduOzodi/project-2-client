@@ -17,9 +17,10 @@ export class DataService {
   apiKey = 'api_key=iuHaJToUfme3uWpAq2m4qcjd0PJ4JT5csxWX6ey4';
 
 
-                         // core URLs for the API
+  // core URLs for the API
 
-  // Search by NDBNO (food id num) = ndbno=######& , type = f means full data report returned.
+  // Search by NDBNO 
+  //(food id num) = ndbno=######& , type = f means full data report returned.
   reportsURL = `https://api.nal.usda.gov/ndb/V2/reports?type=f&${this.apiKey}&`;
   ndbno; // part of the URL, it provides the specific info.
   num; // User clicks on options to see nutritional data.
@@ -27,40 +28,50 @@ export class DataService {
 
   // Free Search by String
   searchURL = `https://api.nal.usda.gov/ndb/search/?${this.apiKey}&ds=Standard%20Reference&`;
-   query; // user can free-search a string using this. query is the input information.
+  query; // user can free-search a string using this. query is the input information.
   fg;  // this is a drop-down select of the options.
   q;
-group;
+  group;
 
 
 
   constructor(private http: HttpClient) { }
-  // urls setted for each specific httprequest tast
+
+  /* 1.02a.2 Function in recipe.component.ts. */
+  fgCats() {
+    this.api = `https://api.nal.usda.gov/ndb/list?${this.apiKey}Y&lt=g`;
 
 
+    return this.http.get(this.api);
 
-searchData(searchParam, fgParam) {
+  }
+  /* end 1.02.2 */
 
-  searchParam.replace(/' '/g, '%20');  // URL Encoding the Search Request **FIX**
-  this.query = searchParam; // User Query information. Plugs into the q variable.
-  this.group = fgParam; // The Food Group user chose from the drop-down.
+  // 1.02b FREE SEARCH FUNCTION //
+  searchData(searchParam, fgParam) {
 
-  // to keep the url able to easily be edited in the future.
-  this.q = `q=${this.query}&`;
-  this.fg = `fg=${this.group}`;
+    searchParam.replace(/' '/g, '%20');  // URL Encoding the Search Request **FIX**
+    this.query = searchParam; // User Query information. Plugs into the q variable.
+    this.group = fgParam; // The Food Group user chose from the drop-down.
 
-  // setting the api as whatever was selected.
-  this.api = this.searchURL + this.q + this.fg;
+    // to keep the url able to easily be edited in the future.
+    this.q = `q=${this.query}&`;
+    this.fg = `fg=${this.group}`;
 
-return this.http.get(this.api);
-}
 
-specificData(ndbno) {
-  this.num = ndbno;
-  ndbno = `ndbno=${this.num}`;
-  this.api = this.reportsURL + ndbno;
-  return this.http.get<Object[]>(this.api);
-}
+    // setting the api as whatever was selected.
+    this.api = this.searchURL + this.q + this.fg;
+
+    return this.http.get(this.api);
+  }
+  // 1.02b  END FREE SEARCH FUNCTION //
+
+  specificData(ndbno) {
+    this.num = ndbno;
+    ndbno = `ndbno=${this.num}`;
+    this.api = this.reportsURL + ndbno;
+    return this.http.get<Object[]>(this.api);
+  }
 
 
 
