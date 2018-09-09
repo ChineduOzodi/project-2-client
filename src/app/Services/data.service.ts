@@ -39,7 +39,7 @@ export class DataService {
 
   /* 1.02a.2 Function in recipe.component.ts. */
   fgCats() {
-    this.api = `https://api.nal.usda.gov/ndb/list?${this.apiKey}Y&lt=g`;
+    this.api = `https://api.nal.usda.gov/ndb/list?${this.apiKey}&lt=g`;
 
 
     return this.http.get(this.api);
