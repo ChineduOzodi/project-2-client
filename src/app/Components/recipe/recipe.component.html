@@ -1,3 +1,86 @@
-<p>
-  recipe works!
-</p>
+<div>
+  <select #select>
+    <option value=''>Choose an Option</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baked%20Products'>Baked Products</option>
+    <option value='Beef%20Products'>Beef Products</option>
+    <option value='Breakfast%20Cereals'>Breakfast Cereals</option>
+    <option value='Fruits%20and%20Fruit%20Juices'>Fruits and Juices</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+    <option value='Baby%20Foods'>Baby Food</option>
+  </select>
+
+  <h1 id="title">{{title}}</h1>
+  <p id="results" cols="30" rows="10">{{x}}</p>
+  <br>
+  <input #searchText type="text">
+  <br>
+  <button type="button" (click)='search(searchText.value,select.value)'>Search</button>
+  <br>
+
+  <div id='left'>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manufacturer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th scope="row"></th>
+          <tr *ngFor="let item of itemList; let i = index" (click)='moreData(item.ndbno)'>
+            <td>{{i}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.manu}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <table class="table" id='right' *ngIf='this.food'>
+      <thead>
+        <tr>
+          <td>{{food.name}}</td>
+        </tr>
+        <tr>
+          <th scope="col">Nutrients</th>
+          <th scope="col">#</th>
+          <th scope="col">Amount Present</th>
+          <th scope="col">
+            <select [(ngModel)]="selectedMeasure" >
+              <option *ngFor="let m of measure; let i = index" #me value='{{measure[i].label}}'>{{measure[i].label}}</option>
+            </select>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <th scope="row"></th>
+        <tr *ngFor="let n of nutrient; let i = index;" >
+          <span *ngIf='checkFilter(n.nutrient_id)'>
+          
+            <td>{{n.name}}</td>
+
+            <td>{{n.nutrient_id}}</td>
+
+                <span *ngFor="let m of n.measures">
+            <td *ngIf="m.label==selectedMeasure && n.unit">{{m.value}}</td> 
+          </span>
+          <td>[{{n.unit}}]</td>
+        </span>
+      </tr>
+          
+
+      </tbody>
+    </table>
+  </div>
+</div>
