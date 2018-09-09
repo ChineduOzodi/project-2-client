@@ -72,9 +72,4 @@ export class DataService {
     this.api = this.reportsURL + ndbno;
     return this.http.get<Object[]>(this.api);
   }
-
-
-
-
-
 }

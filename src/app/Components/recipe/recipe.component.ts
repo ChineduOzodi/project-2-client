@@ -44,10 +44,6 @@ export class RecipeComponent implements OnInit {
 
   }
 
-
-
-
-
   // 1.02b FREE SEARCH FUNCTION //
   search(string, select) {
     this.ds.searchData(string, select).subscribe(search => {
