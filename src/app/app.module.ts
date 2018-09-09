@@ -1,3 +1,6 @@
+import { RegistrationComponent } from './Pages/registration/registration.component';
+import { UserService } from './Services/user.service';
+import { CognitoService } from './Services/cognito.service';
 import { MaterialModule } from './material';
 import { LoginComponent } from './Pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +18,7 @@ import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { AnimateComponent } from './animate/animate.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,8 @@ import { AnimateComponent } from './animate/animate.component';
     LoginComponent,
     CartComponent,
     FrontpageComponent,
-    AnimateComponent
+    AnimateComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { AnimateComponent } from './animate/animate.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [CognitoService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
