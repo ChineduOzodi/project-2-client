@@ -9,6 +9,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './Pages/registration/registration.component';
 
+
 const routes: Routes = [
     {path: '', component: FrontpageComponent},
     {path: 'home', component: DashboardComponent},

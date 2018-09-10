@@ -2,6 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router, Routes } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {trigger, state, style, animate, transition, group } from '@angular/animations';
+import { DialogRegistrationComponent } from './../../DialogBoxes/dialog-registration/dialog-registration.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 
 @Component({
   selector: 'app-frontpage',
@@ -38,7 +41,7 @@ export class FrontpageComponent implements OnInit {
 
   state: String = 'state1';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: MatDialog) {}
   // Soley for animation purposes
   // The member variable is named toState and is changed by the method changeState.
   animateMe() {
@@ -63,6 +66,17 @@ export class FrontpageComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/registration'], )}
       , 1500);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogRegistrationComponent, {
+    width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
   ngOnInit() {

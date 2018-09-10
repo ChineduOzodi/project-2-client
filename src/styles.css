@@ -2,11 +2,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 #image {
-    background: url(https://www.toptal.com/designers/subtlepatterns/patterns/retina_wood.png);
+    background: url(https://media.istockphoto.com/photos/blurred-background-modern-kitchen-with-tabletop-and-space-for-you-picture-id531936416?k=6&m=531936416&s=612x612&w=0&h=egpS7N8xAXj0q5oN0EO9Y1f2dc3B4_cDmtWNpSv0LRo=);
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -5;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+    filter: blur(5px);
 }
 
 
