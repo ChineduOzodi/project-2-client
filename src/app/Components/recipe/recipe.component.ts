@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { CoreNutrients } from '../../Objects/CoreNutrients';
 
+
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
