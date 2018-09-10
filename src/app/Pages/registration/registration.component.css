@@ -32,7 +32,7 @@
     background-color: #ffffff00;
 }
 
-/* Registration Form */
+/* Login Form */
 .example-container {
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@
   }
 
 
-  /* Register Button */
+  /* Login Button */
 .buttonImage {
     background: url('../../../assets/Images/testtab.png');
     margin-top: -3%;
@@ -93,7 +93,4 @@
 .mat-raised-button.mat-primary {
     background-color: blue;
 }
-
-
-
 

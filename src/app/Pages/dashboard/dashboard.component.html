@@ -3,7 +3,7 @@
         <!-- 
         Div for buttons
      -->
-        <div id="center2">
+        <div class="center2">
             <div class="tabs">
                 <a routerLink="/home">
                     <button mat-raised-button color="primary">Home</button>
@@ -27,6 +27,6 @@
             <div class="buttonImage"></div>
         </div>
         <!-- Book Image -->
-        <a class=logo></a>
+        <a [@changeState]="state" class="logo"></a>
     </div>
 </div>

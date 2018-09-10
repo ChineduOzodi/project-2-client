@@ -1,4 +1,3 @@
-import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
 import { MaterialModule } from './material';
 import { LoginComponent } from './Pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RegistrationComponent } from './Pages/registration/registration.component';
+import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
     CartComponent,
     FrontpageComponent,
     RegistrationComponent,
-    CourseDialogComponent
+    DialogRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,8 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
     MaterialModule
   ],
   entryComponents: [
-    CourseDialogComponent
+    DialogRegistrationComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

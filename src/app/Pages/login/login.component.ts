@@ -80,7 +80,6 @@ export class LoginComponent implements OnInit {
   constructor(private snackBar: MatSnackBar) { }
   // Soley for animation purposes
   // The member variable is named toState and is changed by the method changeState.
-
   openSnackBar(name: string, action: string) {
     this.snackBar.open(name, action, {
       duration: 2000,
