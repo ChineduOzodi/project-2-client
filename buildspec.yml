@@ -15,5 +15,5 @@ phases:
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist*'
+    base-directory: 'Project-Two*'
     discard-paths: yes
