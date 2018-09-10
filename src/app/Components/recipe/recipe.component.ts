@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Services/data.service';
+import { CoreNutrients } from '../../Objects/CoreNutrients';
 
 @Component({
   selector: 'app-recipe',
@@ -12,6 +13,7 @@ export class RecipeComponent implements OnInit {
   nutrient: Object;
   measure: Object[];
   itemList;
+  core: CoreNutrients;
   selectedMeasure: string; // measure for 1.06
 
   acceptableNutrients =
