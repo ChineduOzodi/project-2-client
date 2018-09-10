@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NutrientService } from '../../api/nutrient.service';
 import { DataService } from '../../Services/data.service';
+import { CoreNutrients } from '../../Objects/CoreNutrients';
 
 @Component({
   selector: 'app-recipe',
@@ -13,9 +13,14 @@ export class RecipeComponent implements OnInit {
   nutrient: Object;
   measure: Object[];
   itemList;
+  core: CoreNutrients;
   selectedMeasure: string; // measure for 1.06
 
   acceptableNutrients =
+    [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
+
+
+  totalNutrients =
     [539, 269, 208, 203, 204,
       205, 297, 295, 291, 301,
       303, 304, 305, 306, 307,
@@ -23,10 +28,10 @@ export class RecipeComponent implements OnInit {
       404, 405, 406, 415, 435,
       418, 578, 318, 320, 323,
       573, 324, 430, 606, 645,
-      646, 605, 601]; // 1.07 Filter Array
+      646, 605, 601]; // Future Implementation of nutrition.
 
 
-  constructor(private ns: NutrientService, private ds: DataService) { }
+  constructor(private ds: DataService) { }
   ngOnInit() {
 
     // 1.02.1 activates the 1.02 dropdown menu on load.
@@ -70,7 +75,6 @@ export class RecipeComponent implements OnInit {
   checkFilter(x): Boolean {
 
     if (this.acceptableNutrients.includes(x)) {
-      console.log('passed: ' + x);
       return true;
     } else {
       console.log('failed: ' + x);
@@ -78,6 +82,8 @@ export class RecipeComponent implements OnInit {
     }
 
   }
+
+
 
 
 

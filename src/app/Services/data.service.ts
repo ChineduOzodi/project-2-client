@@ -19,8 +19,8 @@ export class DataService {
 
   // core URLs for the API
 
-  // Search by NDBNO 
-  //(food id num) = ndbno=######& , type = f means full data report returned.
+  // Search by NDBNO
+  // (food id num) = ndbno=######& , type = f means full data report returned.
   reportsURL = `https://api.nal.usda.gov/ndb/V2/reports?type=f&${this.apiKey}&`;
   ndbno; // part of the URL, it provides the specific info.
   num; // User clicks on options to see nutritional data.
