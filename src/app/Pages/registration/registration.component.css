@@ -1,6 +1,18 @@
+/* Image */
 .logo {
-    margin-top: -13.7%;
-    
+    margin-top: -10%;    
+    width: 792px;
+    height: 619px;
+    display: block;
+    background:url('../../../assets/Images/openbook.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+}
+
+.logoOne{
+    margin-top: -75%;
+    margin-left: 50%;
     width: 396px;
     height: 576px;
     display: block;
@@ -10,26 +22,44 @@
     border: 1px solid transparent;
 }
 
+
+/* Jumbotron */
 .jumbotron {
     position: fixed;
     margin-top: 1%;
-    margin-left: 22%;
+    margin-left: 7.5%;
     height: 97%;
     background-color: #ffffff00;
-    
 }
+
+/* Registration Form */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    border: none;
+    margin-top: 25%;
+    margin-left: 57%;
+    width: 40%;
+    z-index: 2px;
+
+  }
+
+
+  /* Register Button */
+.buttonImage {
+    background: url('../../../assets/Images/testtab.png');
+    margin-top: -3%;
+    margin-left: 19%;
+    width: 206px;
+    height: 27px;
+ }
 
 .tabs {
     position: relative;
-    margin-top: -134%;
-    margin-left: -9%;
 }
 
-.tab[_ngcontent-c1] {
-    margin-left: 46%;
-    margin-top: -12%;
-}
-
+/* Button */
 .mat-raised-button {
     box-sizing: border-box;
     position: relative;
@@ -56,5 +86,14 @@
     overflow: visible;
     transform: translate3d(0,0,0);
     margin-left: 20%;
-    margin-top: 0%;
+    margin-top: 10%;
+    z-index: 1px;
 }
+
+.mat-raised-button.mat-primary {
+    background-color: blue;
+}
+
+
+
+
