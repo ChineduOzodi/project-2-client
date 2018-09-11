@@ -1,0 +1,11 @@
+#left{
+display: inline-flex;
+width: 100%;
+
+}
+
+#right{
+    border: darkgreen;
+margin-left: 5%;
+    }
+
