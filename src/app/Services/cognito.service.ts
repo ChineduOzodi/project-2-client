@@ -31,12 +31,14 @@ export class CognitoService {
   * their email account.
   *
   * @param  email     The new user's email address
+  * @param username   The new user's username
   * @param  password  The new user's password
   * @param  firstName The new user's first name
   * @param  lastName  The new user's last name
   */
-  registerUser(email: string, password: string, firstName: string, lastName: string): BehaviorSubject<object> {
+  registerUser(email: string, username: string, password: string, firstName: string, lastName: string): BehaviorSubject<object> {
     console.log('[LOG] - In CognitoService.registerUser()');
+    console.log ('password = ' + password);
 
     const attributeList = [];
 
@@ -70,7 +72,7 @@ export class CognitoService {
     // Attempt to add the new user to the pool
     console.log('[LOG] cognito.service - attempting to add user ' + firstName);
     const resultStream = new BehaviorSubject<object>(null);
-    this.userPool.signUp('testUser', password, attributeList, null,
+    this.userPool.signUp( username , password, attributeList, null,
       (error, result) => {
         if (error) {
           console.log('[LOG] cognito.service - error occured');

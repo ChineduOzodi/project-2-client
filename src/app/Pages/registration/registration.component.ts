@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
     const password = this.newUser.password;
     const firstName = this.newUser.f_name;
     const lastName = this.newUser.l_name;
-    this.cognitoService.registerUser(email, password, firstName, lastName).subscribe(
+    this.cognitoService.registerUser(email, username, password, firstName, lastName).subscribe(
       result => {
         if (result) {
           // If the operation returned an error
