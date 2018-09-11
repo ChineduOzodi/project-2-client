@@ -5,13 +5,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './dialog-login.component.html',
+  styleUrls: ['./dialog-login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class DialogLoginComponent implements OnInit {
 
-  constructor(public loginSnackBar: MatSnackBar, private router: Router, public dialogRef: MatDialogRef<LoginComponent>,
+  constructor(public loginSnackBar: MatSnackBar, private router: Router, public dialogRef: MatDialogRef<DialogLoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   redirectMe() {

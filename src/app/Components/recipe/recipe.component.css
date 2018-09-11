@@ -1,0 +1,8 @@
+/* Jumbotron */
+.jumbotron {
+    position: fixed;
+    margin-top: 1%;
+    margin-left: 7.5%;
+    height: 97%;
+    background-color: #ffffff00;
+}

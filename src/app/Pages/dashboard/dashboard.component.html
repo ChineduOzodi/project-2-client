@@ -1,34 +1,13 @@
+<!-- Button Navbar -->
+<app-button-navbar></app-button-navbar>
+
 <div class="container">
     <div class="jumbotron">
-        <!-- 
-        Div for buttons
-     -->
-        <div class="center2">
-            <div class="tabs">
-                <a routerLink="/home">
-                    <button mat-raised-button color="primary">Home</button>
-                </a>
-            </div>
-            <div class="tabs">
-                <a routerLink="/recipe">
-                    <button mat-raised-button color="primary">Recipe</button>
-                </a>
-            </div>
-            <div class="tabs">
-                <a routerLink="/cart">
-                    <button mat-raised-button color="primary">Cart</button>
-                </a>
-            </div>
-            <div class="tabs">
-                <a routerLink="/box">
-                    <button mat-raised-button color="primary" routerLink="recipe">box</button>
-                </a>
-            </div>
-            <div class="buttonImage"></div>
-        </div>
-        <!-- Book Image -->
+
+        <!-- Open Book Image -->
         <a [@appearOpenBook]="state" class="logo"></a>
 
+        <!-- Closed Book Image -->
         <a [@disappearClosedBook]="stateOne" class="logos"></a>
 
 

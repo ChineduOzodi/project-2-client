@@ -1,4 +1,4 @@
-import { LoginComponent } from './../login/login.component';
+import { DialogLoginComponent } from '../../DialogBoxes/dialog-login/dialog-login.component';
 import { Router, Routes } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {trigger, state, style, animate, transition, group } from '@angular/animations';
@@ -74,7 +74,7 @@ export class FrontpageComponent implements OnInit {
   }
 
   openLogInDialog(): void {
-    const dialogRef = this.dialog.open(LoginComponent, {
+    const dialogRef = this.dialog.open(DialogLoginComponent, {
     width: '300px'
     });
 

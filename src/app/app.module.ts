@@ -1,5 +1,5 @@
 import { MaterialModule } from './material';
-import { LoginComponent } from './Pages/login/login.component';
+import { DialogLoginComponent } from './DialogBoxes/dialog-login/dialog-login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RegistrationComponent } from './Pages/registration/registration.component';
 import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
+import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
+import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,14 @@ import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/d
     RecipeComponent,
     DashboardComponent,
     UserDashboardComponent,
-    LoginComponent,
+    DialogLoginComponent,
     CartComponent,
     FrontpageComponent,
     RegistrationComponent,
     DialogRegistrationComponent,
+    ButtonNavbarComponent,
+    DialogSearchNutriComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/d
   ],
   entryComponents: [
     DialogRegistrationComponent,
-    LoginComponent
+    DialogLoginComponent,
+    DialogSearchNutriComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
