@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./dashboard.component.css'],
   animations: [
     // trigger listening for the changeState
-    trigger('changeState', [
+    trigger('appearOpenBook', [
       state('void', style({
         opacity: 0
 
@@ -28,7 +28,7 @@ import { MatSnackBar } from '@angular/material';
       ]),
     ]),
     // trigger listening for the changeCover
-    trigger('changeCover', [
+    trigger('disappearClosedBook', [
       state('void', style({
         opacity: 0.3
 
@@ -46,25 +46,6 @@ import { MatSnackBar } from '@angular/material';
         ])
       ]),
     ]),
-    // trigger listening for the changeLogin
-    trigger('changeLogin', [
-      state('void', style({
-        opacity: 0
-
-      })),
-      state('state3', style({
-
-        opacity: 1
-      })
-      ),
-      transition('void => state3', [
-        group([
-          animate('.5s .5s ease-in', style({
-            opacity: 1
-          }))
-        ])
-      ]),
-    ]),
   ]
 })
 
@@ -74,14 +55,11 @@ export class DashboardComponent implements OnInit {
 
   stateOne: String = 'state2';
 
-  stateLogin: String = 'state3';
-
   constructor() { }
 
   ngOnInit() {
     this.state = 'state1';
     this.stateOne = 'state2';
-    this.stateLogin = 'state3';
   }
 
 }

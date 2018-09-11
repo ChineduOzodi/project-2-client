@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './../login/login.component';
 import { Router, Routes } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {trigger, state, style, animate, transition, group } from '@angular/animations';
@@ -12,7 +12,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./frontpage.component.css'],
   animations: [
     // trigger listening for the changeState
-    trigger('changeState', [
+    trigger('animateClosedBook', [
       state('state1', style({
 
         transform: 'translateX(0)'
@@ -42,12 +42,6 @@ export class FrontpageComponent implements OnInit {
   state: String = 'state1';
 
   constructor(private router: Router, public dialog: MatDialog) {}
-  // Soley for animation purposes
-  // The member variable is named toState and is changed by the method changeState.
-  animateMe() {
-    this.state = 'state2';
-    this.switchPage();
-  }
 
   registerMe() {
     this.state = 'state2';
@@ -68,7 +62,7 @@ export class FrontpageComponent implements OnInit {
       , 1500);
   }
 
-  openDialog(): void {
+  openRegisterDialog(): void {
     const dialogRef = this.dialog.open(DialogRegistrationComponent, {
     width: '300px'
     });
@@ -77,6 +71,20 @@ export class FrontpageComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
+  }
+
+  openLogInDialog(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+    width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.state = 'state2';
+    });
+
+
   }
 
   ngOnInit() {
