@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
 #image {
     background: url(https://www.toptal.com/designers/subtlepatterns/patterns/retina_wood.png);
     position: absolute;
@@ -9,4 +8,5 @@
     height: 100%;
     z-index: -5;
 }
+
 

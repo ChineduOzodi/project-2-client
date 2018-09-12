@@ -3,9 +3,35 @@
 
     <a [@changeState]="state" class="logo">
       <!-- Binding the input property, currentState, to toState -->
+      <!-- Login Form -->
+      <div [@changeLogin]="stateLogin" class="example-container">
+
+        <mat-form-field>
+          <input matInput value="Alex Moraga" placeholder="Name" #name>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Textarea"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Button Image -->
+        <div class="buttonImage"></div>
+
+        <div class="tabs">
+          <button (click)="openSnackBar(name.value)" mat-raised-button color="primary" routerLink="/home">Login</button>
+        </div>
+      </div>
     </a>
-    <!-- For the image coming from the frontpage -->
+
+    <!-- For the image coming from the frontpage
     <a [@changeCover]="stateOne" class="logoOne">
-    </a>
+    </a> -->
+
   </div>
 </div>
