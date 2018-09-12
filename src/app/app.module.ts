@@ -1,3 +1,5 @@
+import { UserService } from './Services/user.service';
+import { CognitoService } from './Services/cognito.service';
 import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
 import { MaterialModule } from './material';
 import { LoginComponent } from './Pages/login/login.component';
@@ -14,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RegistrationComponent } from './Pages/registration/registration.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
   entryComponents: [
     CourseDialogComponent
   ],
-  providers: [],
+  providers: [CognitoService, UserService],
   bootstrap: [AppComponent]
 
 })
