@@ -1,4 +1,3 @@
-import { RegistrationComponent } from './Pages/registration/registration.component';
 // Used for navigation, like href
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RecipeComponent } from './Components/recipe/recipe.component';
@@ -19,7 +18,7 @@ const routes: Routes = [
     {path: 'cart', component: CartComponent},
     {path: 'recipe', component: RecipeComponent},
     //TODO: Consolidate the path name for registration
-    {path: 'register', component: RegistrationComponent}
+    {path: 'register', component: RegistrationComponent},
     {path: 'registration', component: RegistrationComponent},
 ];
 

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
 import { CourseDialogComponent } from '../../DialogBoxes/course-dialog-component/course-dialog-component';
-import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {

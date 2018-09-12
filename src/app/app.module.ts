@@ -1,4 +1,3 @@
-import { RegistrationComponent } from './Pages/registration/registration.component';
 import { UserService } from './Services/user.service';
 import { CognitoService } from './Services/cognito.service';
 import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
@@ -28,7 +27,6 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
     LoginComponent,
     CartComponent,
     FrontpageComponent,
-    AnimateComponent,
     RegistrationComponent,
     CourseDialogComponent
   ],
