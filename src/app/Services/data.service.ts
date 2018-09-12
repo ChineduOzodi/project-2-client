@@ -73,3 +73,4 @@ export class DataService {
     return this.http.get<Object[]>(this.api);
   }
 }
+

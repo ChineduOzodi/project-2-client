@@ -1,9 +1,19 @@
 <div class="container">
     <div class=jumbotron>
-        
-        <!-- onclick, state will be changed to state2, which will allow the image to translate to the right  -->
+
+        <!-- onclick, state will be changed to state2, which will allow the image to translate to the right. And going to the loggin page -->
         <a [@changeState]="state" (click)="animateMe()" class="logo">
             <!-- Binding the input property, currentState, to toState -->
         </a>
+
+        <!-- onclick, state will be changed to state2, which will allow the image to translate to the right. And going to the registration page  -->
+        <div class="tabs">
+            <button (click)="registerMe()" mat-raised-button color="primary"> Register an Account </button>
+        </div>
+
+        <!-- onclick, state will be changed to state2, which will allow the image to translate to the right. And going to the loggin page  -->
+        <div class="tab">
+            <button (click)="animateMe()" mat-raised-button color="primary"> LogIn </button>
+        </div>
     </div>
 </div>
