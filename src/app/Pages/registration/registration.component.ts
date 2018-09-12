@@ -4,6 +4,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
+import { CourseDialogComponent } from '../../DialogBoxes/course-dialog-component/course-dialog-component';
+import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 @Component({
   selector: 'app-registration',
@@ -11,6 +20,7 @@ import { UserService } from '../../Services/user.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+
   // This string is used when we check if the password field matches
   // the confirm password field
   message: string;
@@ -19,14 +29,31 @@ export class RegistrationComponent implements OnInit {
   errorMessage: string;
 
   newUser = new User();
+  
+  animal: string;
+  name: string;
 
   constructor(
     private userService: UserService,
     private cognitoService: CognitoService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
+  }
+  
+  /**
+  * TODO: Document or remove this method
+  */
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CourseDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   /**

@@ -8,6 +8,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RegistrationComponent } from './Pages/registration/registration.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
     {path: 'userDash', component: UserDashboardComponent},
     {path: 'cart', component: CartComponent},
     {path: 'recipe', component: RecipeComponent},
+    //TODO: Consolidate the path name for registration
     {path: 'register', component: RegistrationComponent}
+    {path: 'registration', component: RegistrationComponent},
 ];
 
 @NgModule({
