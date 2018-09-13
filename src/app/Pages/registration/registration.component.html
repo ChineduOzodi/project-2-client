@@ -1,18 +1,19 @@
 <div class="container">
-  <div class=jumbotron>
-
-    <a [@changeState]="state" class="logo">
-      <!-- Binding the input property, currentState, to toState -->
-      <!-- Login Form -->
-      <div [@changeLogin]="stateLogin" class="example-container">
-        <!-- Button Image -->
-        <!-- <div class="buttonImage"></div> -->
-
-        <div class="tabs">
-          <button (click)="openDialog()" mat-raised-button color="primary" routerLink="/registration">Register</button>
+    <div class=jumbotron>
+  
+      <a [@changeState]="state" class="logo">
+        <!-- Binding the input property, currentState, to toState -->
+        <!-- Login Form -->
+        <div [@changeLogin]="stateLogin" class="example-container">
+          <!-- Button Image -->
+          <!-- <div class="buttonImage"></div> -->
+  
+          <div class="tabs">
+            <button (click)="openDialog()" mat-raised-button color="primary" routerLink="/registration">Register</button>
+          </div>
         </div>
-      </div>
     </a>
+
     <!-- For the image coming from the frontpage
       <a [@changeCover]="stateOne" class="logoOne">
       </a> -->

@@ -79,7 +79,7 @@ export class DialogSearchNutriComponent implements OnInit {
 
   // 1.02b FREE SEARCH FUNCTION //
   search(string, select) {
-    this.ds.searchData(string, select).subscribe( (search: any) => {
+    this.ds.searchData(string, select).subscribe((search: any) => {
       this.itemList = search.list.item;
     });
   }
