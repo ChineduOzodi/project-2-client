@@ -1,3 +1,17 @@
 <p>
   user-dashboard works!
 </p>
+
+
+<div class='border border-secondary'>
+  <div class='border border-warning'>
+      <p>my bmi: {{bmi}}</p>
+      <p>my ws: {{ws}}</p>
+  </div>
+  
+  <input #weight type="number" placeholder='weight in [lb]'required>
+  <br>
+  <input #feet type="number" placeholder='feet'required>
+  <input #inches type="number" placeholder='inches'required>
+  <button type='button' (click)='bmiCalculator(weight.value, feet.value, inches.value)'>Submit</button>
+</div>

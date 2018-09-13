@@ -7,12 +7,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
-                MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule],
+                MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
+                MatExpansionModule],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
-                MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule],
+                MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
+                MatExpansionModule],
 })
 export class MaterialModule { }

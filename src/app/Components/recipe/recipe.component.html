@@ -2,8 +2,13 @@
 
 <div class="container">
     <div class=jumbotron>
-        <div class="tab">
-            <button (click)="openSearchNutri()" mat-raised-button color="primary"> Search </button>
-        </div>
+
+        <a [@zoomInclosedBook]="state" (click)='zoomInMe()' class="logo">
+
+            <div class="tab">
+                <button (click)="openSearchNutri()" mat-raised-button color="primary"> Search </button>
+            </div>
+            
+        </a>
     </div>
 </div>

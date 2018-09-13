@@ -1,26 +1,31 @@
 <div class="container">
   <div class="jumbotron">
-    <div class="center2">
-      <div class="tabs">
+    <div [@navBarRight]="stateNav" class="center2">
+
+      <div (click)="moveMeLeft()" class="tabs">
         <a routerLink="/home">
           <button mat-raised-button color="primary">Home</button>
         </a>
       </div>
-      <div class="tabs">
+
+      <div (click)="moveMeRight()" class="tabs">
         <a routerLink="/recipe">
           <button mat-raised-button color="primary">Recipe</button>
         </a>
       </div>
-      <div class="tabs">
+
+      <div (click)="moveMeRight()" class="tabs">
         <a routerLink="/cart">
           <button mat-raised-button color="primary">Cart</button>
         </a>
       </div>
-      <div class="tabs">
+
+      <div (click)="moveMeRight()" class="tabs">
         <a routerLink="/box">
           <button mat-raised-button color="primary" routerLink="recipe">box</button>
         </a>
       </div>
+      
       <div class="buttonImage"></div>
     </div>
   </div>
