@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   errorMessage: string;
 
   newUser = new User();
-  
+
   animal: string;
   name: string;
 
@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   /**
   * TODO: Document or remove this method
   */
