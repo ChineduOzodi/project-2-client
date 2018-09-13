@@ -1,96 +1,14 @@
-<!-- 1.00 full-body div that encapsulates the whole program. -->
-<div class="border border-info">
+<app-button-navbar></app-button-navbar>
 
+<div class="container">
+    <div class=jumbotron>
 
-  <!-- 1.01 Title and Search GUI START -->
-  <!-- 1.02a select options to filter results. -->
-  <div class="border border-secondary d-flex justify-content-center">
-    <h1 id="title">Nutrient Finder</h1>
-    <select #select>
-      <option value=''>Please Select an Option</option>
-      <option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</option>
+        <a [@zoomInclosedBook]="state" (click)='zoomInMe()' class="logo">
 
-    </select>
-    <!--1.02a select options end -->
-    <br>
-    <!-- 1.02-input search input box for user -->
-    <input #searchText type="text">
-    <!-- end of box. -->
-    <br>
-    <!--1.02b calls search function search(search bar info , foodgroup selected) -->
-    <button type="button" (click)='search(searchText.value,select.value)'>Search</button>
-    <!--1.02b end  -->
-    <br>
-  </div>
-  <!--1.01 Title and Search GUI END -->
-  <div id='left'>
-    <!--1.03 LEFT TABLE WITH SEARCH RESULTS DATA SET -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Index</th>
-          <th scope="col">Name</th>
-          <th scope="col">Manufacturer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <th scope="row"></th>
-        <!--1.04 THIS FUNCTION ACTIVATES THE INDIVIDUAL RESULTS TABLE AN ITEM. -->
-        <tr *ngFor="let item of itemList; let i = index" (click)='moreData(item.ndbno)'>
-          <td>{{i}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.manu}}</td>
-        </tr>
-        <!-- 1.04 END OF ACTIVATOR -->
-      </tbody>
-    </table>
-    <!--1.03 END OF LEFT TABLE. -->
-
-
-    <!-- 1.05 RESULTS TABLE -->
-    <div class="border border-warning">
-      <br>
-      <h3>{{food.name}}</h3>
-      <br>
-
-
-      <table class="table" id='right' *ngIf='this.food'>
-        <thead>
-          <tr>
-            <th scope="col">Nutrients</th>
-            <th scope="col">#</th>
-            <th scope="col">Amount Present</th>
-            <th scope="col">
-              <!--1.06 THIS IS TO ALLOW THE API TO SELECT THE SPECIFIC MEASUREMENT FOR THE USERS RESULTS TABLE. -->
-              <select [(ngModel)]="selectedMeasure">
-                <option *ngFor="let m of measure; let i = index" #me value='{{measure[i].label}}'>{{measure[i].label}}</option>
-              </select>
-              <!-- 1.06 END -->
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <th scope="row"></th>
-          <tr *ngFor="let n of nutrient; let i = index;">
-            <!-- 1.07 filters data array for numbers found in acceptableNutrients -->
-            <span *ngIf='checkFilter(n.nutrient_id)'>
-              <!-- 1.07 end -->
-              <td>{{n.name}}</td>
-
-              <td>{{n.nutrient_id}}</td>
-              <!-- 1.08 dynamically changes the nutrient model based on the  -->
-              <span *ngFor="let m of n.measures">
-                <td *ngIf="m.label==selectedMeasure && n.unit">{{m.value}}</td>
-              </span>
-              <td>[{{n.unit}}]</td>
-            </span>
-            <!-- 1.08 END -->
-          </tr>
-
-        </tbody>
-      </table>
+            <div class="tab">
+                <button (click)="openSearchNutri()" mat-raised-button color="primary"> Search </button>
+            </div>
+            
+        </a>
     </div>
-    <!--1.05 END OF RESULTS TABLE -->
-  </div>
 </div>
-

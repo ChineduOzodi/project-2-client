@@ -1,91 +1,73 @@
+import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../Services/data.service';
-import { CoreNutrients } from '../../Objects/CoreNutrients';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
+
 
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
+  animations: [
+
+    // animation for the book to enlarge when a button is clicked to navigate to the next page
+    trigger('zoomInclosedBook', [
+      state('small', style({
+        width: 120, transform: 'scale(1.6) translateX(0)', opacity: 1
+      })),
+      state('large', style({
+        transform: 'scale(1.2)',
+      })),
+
+      // To open the book and zoom in when page is switched
+      transition('void => small', [
+        style({ width: 10, transform: 'translateX(415px) translateY(-15%)', opacity: 0 }),
+        group([
+          animate('0.2s 1s ease-in', style({
+            transform: ' scale(1.6) translateX(0)',
+            width: 800
+          })),
+          animate('0.2s ease-in', style({
+            opacity: 1
+          }))
+        ])
+      ]),
+    ])
+  ]
 })
 export class RecipeComponent implements OnInit {
-  food: Object[];
-  foodgroups; // 1.02 Select Dropdown
-  nutrient: Object;
-  measure: Object[];
-  itemList;
-  core: CoreNutrients;
-  selectedMeasure: string; // measure for 1.06
 
-  acceptableNutrients =
-    [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
+  // When the app loads, the state becomes small
+  state: String = 'small';
 
+  constructor(public dialog: MatDialog) { }
+  openSearchNutri() {
+    const dialogRef = this.dialog.open(DialogSearchNutriComponent,
+      {
+        width: '80%'
+      });
 
-  totalNutrients =
-    [539, 269, 208, 203, 204,
-      205, 297, 295, 291, 301,
-      303, 304, 305, 306, 307,
-      309, 312, 315, 317, 401,
-      404, 405, 406, 415, 435,
-      418, 578, 318, 320, 323,
-      573, 324, 430, 606, 645,
-      646, 605, 601]; // Future Implementation of nutrition.
-
-
-  constructor(private ds: DataService) { }
-  ngOnInit() {
-
-    // 1.02.1 activates the 1.02 dropdown menu on load.
-    this.fgCats();
-  }
-
-  // 1.02a.2 function for the on init.
-  fgCats() {
-
-    this.ds.fgCats().subscribe(fg => {
-      this.foodgroups = fg.list.item;
-
-    }
-    );
-
-  }
-
-  // 1.02b FREE SEARCH FUNCTION //
-  search(string, select) {
-    this.ds.searchData(string, select).subscribe(search => {
-      this.itemList = search.list.item;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
+  ngOnInit() {
 
-  // 1.04 DETAILS BY ITEM NUMBER
-  moreData(data) {
-    console.log(data);
-
-    // setting the JSON data to obj 'selected'
-    this.ds.specificData(data).subscribe(selected => {
-      this.food = selected.foods[0].food.desc; // array of details for individual items
-      this.nutrient = selected.foods[0].food.nutrients; // food item nutrient array.
-      this.measure = selected.foods[0].food.nutrients[0].measures;
-      this.selectedMeasure = this.measure[0].label; // measure for 1.06
-    }
-    );
-  }
-
-  // 1.07 Allowable Nutrients Filter
-  // if it doesn't contain a nutrient # matching it will not show.
-  checkFilter(x): Boolean {
-
-    if (this.acceptableNutrients.includes(x)) {
-      return true;
-    } else {
-      console.log('failed: ' + x);
-      return false;
-    }
 
   }
 
+  zoomInMe() {
 
+    // this.state = (this.state === 'small' ? 'large' : 'small')
+    this.state = 'large';
 
+  }
 
+  zoomOutMe() {
 
+    // this.state = 'small';
+
+  }
 }

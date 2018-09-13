@@ -1,8 +1,7 @@
 import { UserService } from './Services/user.service';
 import { CognitoService } from './Services/cognito.service';
-import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
 import { MaterialModule } from './material';
-import { LoginComponent } from './Pages/login/login.component';
+import { DialogLoginComponent } from './DialogBoxes/dialog-login/dialog-login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -16,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RegistrationComponent } from './Pages/registration/registration.component';
+import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
+import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
+import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 
 
 @NgModule({
@@ -24,11 +26,14 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
     RecipeComponent,
     DashboardComponent,
     UserDashboardComponent,
-    LoginComponent,
+    DialogLoginComponent,
     CartComponent,
     FrontpageComponent,
     RegistrationComponent,
-    CourseDialogComponent
+    DialogRegistrationComponent,
+    ButtonNavbarComponent,
+    DialogSearchNutriComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,9 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
     MaterialModule
   ],
   entryComponents: [
-    CourseDialogComponent
+    DialogRegistrationComponent,
+    DialogLoginComponent,
+    DialogSearchNutriComponent
   ],
   providers: [CognitoService, UserService],
   bootstrap: [AppComponent]
