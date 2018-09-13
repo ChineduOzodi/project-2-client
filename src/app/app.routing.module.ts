@@ -13,10 +13,7 @@ const routes: Routes = [
     {path: 'home', component: DashboardComponent},
     {path: 'userDash', component: UserDashboardComponent},
     {path: 'cart', component: CartComponent},
-    {path: 'recipe', component: RecipeComponent},
-    //TODO: Consolidate the path name for registration
-    {path: 'register', component: RegistrationComponent},
-    {path: 'registration', component: RegistrationComponent},
+    {path: 'recipe', component: RecipeComponent}
 ];
 
 @NgModule({

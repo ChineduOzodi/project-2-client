@@ -38,7 +38,7 @@ export class DialogSearchNutriComponent implements OnInit {
   food: Object[];
   foodgroups; // 1.02 Select Dropdown
   nutrient: Object;
-  measure: Object[];
+  measure: any;
   itemList: Object[];
   core: CoreNutrients;
   selectedMeasure: string; // measure for 1.06
@@ -69,7 +69,7 @@ export class DialogSearchNutriComponent implements OnInit {
   // 1.02a.2 function for the on init.
   fgCats() {
 
-    this.ds.fgCats().subscribe(fg => {
+    this.ds.fgCats().subscribe((fg: any) => {
       this.foodgroups = fg.list.item;
 
     }
@@ -79,7 +79,7 @@ export class DialogSearchNutriComponent implements OnInit {
 
   // 1.02b FREE SEARCH FUNCTION //
   search(string, select) {
-    this.ds.searchData(string, select).subscribe(search => {
+    this.ds.searchData(string, select).subscribe( (search: any) => {
       this.itemList = search.list.item;
     });
   }
@@ -89,7 +89,7 @@ export class DialogSearchNutriComponent implements OnInit {
     console.log(data);
 
     // setting the JSON data to obj 'selected'
-    this.ds.specificData(data).subscribe(selected => {
+    this.ds.specificData(data).subscribe((selected: any) => {
       this.food = selected.foods[0].food.desc; // array of details for individual items
       this.nutrient = selected.foods[0].food.nutrients; // food item nutrient array.
       this.measure = selected.foods[0].food.nutrients[0].measures;
