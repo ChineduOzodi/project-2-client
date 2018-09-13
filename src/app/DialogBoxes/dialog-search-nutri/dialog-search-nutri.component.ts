@@ -35,11 +35,11 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
 })
 export class DialogSearchNutriComponent implements OnInit {
 
-  food: Object[];
+  food: any;
   foodgroups; // 1.02 Select Dropdown
-  nutrient: Object;
+  nutrient: any;
   measure: any;
-  itemList: Object[];
+  itemList: any;
   core: CoreNutrients;
   selectedMeasure: string; // measure for 1.06
 
