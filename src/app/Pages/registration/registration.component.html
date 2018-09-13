@@ -12,11 +12,23 @@
             <button (click)="openDialog()" mat-raised-button color="primary" routerLink="/registration">Register</button>
           </div>
         </div>
-      </a>
-  
-      <!-- For the image coming from the frontpage
+      </div>
+    </a>
+
+    <!-- For the image coming from the frontpage
       <a [@changeCover]="stateOne" class="logoOne">
       </a> -->
-  
+
+  </div>
+  <div class="row justify-content-center mx-2">
+    <div class="col-4">
+      <h2>Register</h2>
+      <input placeholder="Email" type="email" [(ngModel)]="newUser.email">
+      <input placeholder="Username" type="username" [(ngModel)]="newUser.username">
+      <input placeholder="Password" type="password" [(ngModel)]="newUser.password">
+      <input placeholder="First Name" type="text" [(ngModel)]="newUser.f_name">
+      <input placeholder="Last Name" type="text" [(ngModel)]="newUser.l_name">
+      <button mat-raised-button name="register" color="primary" (click)="register()">Register</button>
     </div>
   </div>
+</div>

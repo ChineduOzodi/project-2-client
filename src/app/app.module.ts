@@ -1,3 +1,6 @@
+import { UserService } from './Services/user.service';
+import { CognitoService } from './Services/cognito.service';
+import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
 import { MaterialModule } from './material';
 import { DialogLoginComponent } from './DialogBoxes/dialog-login/dialog-login.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +19,7 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
 import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
 import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
 import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +49,7 @@ import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/di
     DialogLoginComponent,
     DialogSearchNutriComponent
   ],
-  providers: [],
+  providers: [CognitoService, UserService],
   bootstrap: [AppComponent]
 
 })
