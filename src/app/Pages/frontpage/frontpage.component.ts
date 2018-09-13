@@ -1,7 +1,10 @@
-import { HttpClientModule } from '@angular/common/http';
+import { DialogLoginComponent } from '../../DialogBoxes/dialog-login/dialog-login.component';
 import { Router, Routes } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {trigger, state, style, animate, transition, group } from '@angular/animations';
+import { DialogRegistrationComponent } from './../../DialogBoxes/dialog-registration/dialog-registration.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 
 @Component({
   selector: 'app-frontpage',
@@ -9,7 +12,7 @@ import {trigger, state, style, animate, transition, group } from '@angular/anima
   styleUrls: ['./frontpage.component.css'],
   animations: [
     // trigger listening for the changeState
-    trigger('changeState', [
+    trigger('animateClosedBook', [
       state('state1', style({
 
         transform: 'translateX(0)'
@@ -38,13 +41,7 @@ export class FrontpageComponent implements OnInit {
 
   state: String = 'state1';
 
-  constructor(private router: Router) {}
-  // Soley for animation purposes
-  // The member variable is named toState and is changed by the method changeState.
-  animateMe() {
-    this.state = 'state2';
-    this.switchPage();
-  }
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   registerMe() {
     this.state = 'state2';
@@ -63,6 +60,31 @@ export class FrontpageComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/registration'], )}
       , 1500);
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(DialogRegistrationComponent, {
+    width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
+  }
+
+  openLogInDialog(): void {
+    const dialogRef = this.dialog.open(DialogLoginComponent, {
+    width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.state = 'state2';
+    });
+
+
   }
 
   ngOnInit() {
