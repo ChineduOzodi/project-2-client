@@ -9,8 +9,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class DialogRegistrationComponent implements OnInit {
 
   constructor( public dialogRef: MatDialogRef<DialogRegistrationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }

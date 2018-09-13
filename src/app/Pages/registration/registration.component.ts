@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
-// import { CourseDialogComponent } from '../../DialogBoxes/course-dialog-component/course-dialog-component';
+import { CourseDialogComponent } from '../../DialogBoxes/course-dialog-component/course-dialog-component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {
@@ -98,7 +98,7 @@ export class RegistrationComponent implements OnInit {
   errorMessage: string;
 
   newUser = new User();
-
+  
   animal: string;
   name: string;
 
@@ -109,7 +109,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) { }
-
+  
   /**
   * TODO: Document or remove this method
   */

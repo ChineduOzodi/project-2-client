@@ -1,5 +1,6 @@
 import { UserService } from './Services/user.service';
 import { CognitoService } from './Services/cognito.service';
+import { CourseDialogComponent } from './DialogBoxes/course-dialog-component/course-dialog-component';
 import { MaterialModule } from './material';
 import { DialogLoginComponent } from './DialogBoxes/dialog-login/dialog-login.component';
 import { BrowserModule } from '@angular/platform-browser';
