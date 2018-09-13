@@ -9,14 +9,16 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
                 MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
-                MatExpansionModule],
+                MatExpansionModule, MatCardModule],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
                 MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
-                MatExpansionModule],
+                MatExpansionModule, MatCardModule],
 })
 export class MaterialModule { }
