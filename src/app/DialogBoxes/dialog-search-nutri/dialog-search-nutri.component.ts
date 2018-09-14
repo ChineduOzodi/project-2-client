@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../Services/data.service';
 import { CoreNutrients } from '../../Objects/CoreNutrients';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
+import { Nutrient } from '../../Models/nutrient';
+import { Measures } from '../../Models/measures';
 
 
 @Component({
@@ -35,13 +37,13 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
 })
 export class DialogSearchNutriComponent implements OnInit {
 
-  food: any;
-  foodgroups; // 1.02 Select Dropdown
-  nutrient: any;
-  measure: any;
+  foodgroups: ''; // 1.02 Select Dropdown
   itemList: any;
-  core: CoreNutrients;
   selectedMeasure: string; // measure for 1.06
+  core: Nutrient[];
+  AllNutrient: Nutrient[];
+  Measures: Measures[];
+  displayedColumns: string[] = ['Nutrient', 'name', 'weight', 'symbol'];
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
@@ -90,22 +92,29 @@ export class DialogSearchNutriComponent implements OnInit {
 
     // setting the JSON data to obj 'selected'
     this.ds.specificData(data).subscribe((selected: any) => {
-      this.food = selected.foods[0].food.desc; // array of details for individual items
-      this.nutrient = selected.foods[0].food.nutrients; // food item nutrient array.
-      this.measure = selected.foods[0].food.nutrients[0].measures;
-      this.selectedMeasure = this.measure[0].label; // measure for 1.06
+
+      this.AllNutrient = selected.foods[0].food.nutrients; // array of details for individual items
+      this.core = this.AllNutrient;
+      this.Measures = selected.foods[0].food.nutrients[0].measures;
+      this.selectedMeasure = this.Measures[0].label; // measure for 1.06
+
+
+
     }
     );
   }
 
+
+
   // 1.07 Allowable Nutrients Filter
   // if it doesn't contain a nutrient # matching it will not show.
   checkFilter(x): Boolean {
+const y = x.nutrient_id;
+    if (this.acceptableNutrients.includes(y)) {
 
-    if (this.acceptableNutrients.includes(x)) {
       return true;
     } else {
-      console.log('failed: ' + x);
+
       return false;
     }
 
