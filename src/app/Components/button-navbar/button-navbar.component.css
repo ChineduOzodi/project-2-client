@@ -1,8 +1,18 @@
-.center2 {
+.right-of-book-normal {
     position: absolute;
     margin-left: -5%;
     margin-top: -6%;
     left: 9in;
+    width: 1in;
+    height: 6in;
+    z-index: -6;
+}
+
+.right-of-book-zoomed {
+    position: absolute;
+    margin-left: -5%;
+    margin-top: -6%;
+    left: 11.5in;
     width: 1in;
     height: 6in;
     z-index: -6;
