@@ -38,11 +38,96 @@
 
 /* User's Profile Card */
 .example-card {
-    max-width: 300px;
+    max-width: 319px;
+    background-color: transparent;
   }
   
-  .example-header-image {
+.example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
 
+/* Cards position */
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+    padding: 27px;
+    margin-top: 7%;
+    margin-left: 8%;
+    height: 77%;
+    width: 374px;
+  }
+
+/* Cards shadow */
+.mat-card:not([class*=mat-elevation-z]) {
+    -webkit-box-shadow: -18px 1px 61px -35px rgba(0,0,0,0.75);
+    -moz-box-shadow: -18px 1px 61px -35px rgba(0,0,0,0.75);
+    box-shadow: -18px 1px 61px -35px rgba(0,0,0,0.75);
+}
+
+/* User's photo */
+.mat-card-avatar {
+    margin-left: 16%;
+    margin-top: -2%;
+    height: 180px;
+    width: 180px;
+    border-radius: 62%;
+    flex-shrink: 0;
+}
+
+/* User's Card Title */
+.mat-card-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-left: 30%;
+    margin-bottom: 29px;
+}
+
+.mat-card-content {
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* Title style */
+.title {
+    font-size:18px;
+    font-weight:200;
+    margin-left: 0%;
+    text-align: left;
+
+}
+
+/* Status bars */
+.subtitle {
+    font-size: 14px;
+    margin-top: 0%;
+    text-align: right;
+}
+  
+.mat-card-content[_ngcontent-c1] {
+    display: block;
+    margin-bottom: 0%;
+    height: 57%;
+}
+
+.mat-card-title:not(:first-child) {
+    margin-top: -15px;
+}
+
+/* Alter these for positioning for the status bars!!!!!!!!!!! */
+.mat-card-subtitle:not(:first-child) {
+margin-top: -50px;
+}
+
+.mat-card-subtitle {
+    display: block;
+    margin-bottom: 30px;
+}
+
+/* edit button */
+.edit {
+    margin-left: 68%;
+    margin-top: -5%;
+    position: absolute;
+}
