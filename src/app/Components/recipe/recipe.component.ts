@@ -38,9 +38,14 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
   ]
 })
 export class RecipeComponent implements OnInit {
-
+  /**
+   * The navbar initial Position is set with this: right-of-book-normal, right-of-book-zoomed
+   */
+  navbarPosition: String = 'right-of-book-zoomed';
   // When the app loads, the state becomes small
   state: String = 'small';
+
+  ngOnInit() {}
 
   constructor(public dialog: MatDialog) { }
   openSearchNutri() {
@@ -52,10 +57,6 @@ export class RecipeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  }
-  ngOnInit() {
-
-
   }
 
   zoomInMe() {
