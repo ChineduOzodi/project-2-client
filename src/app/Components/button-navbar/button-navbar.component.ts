@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { loadQueryList } from '@angular/core/src/render3/instructions';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
 
@@ -37,7 +37,17 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
     ])
   ]
 })
+/**
+ * The main navbar component that is used to navigate through the website
+ * @authors Chinedu Ozodi, Alex Moraga
+ */
 export class ButtonNavbarComponent implements OnInit {
+  /**
+   * The navbar initial Position is set with this: right-of-book-normal, right-of-book-zoomed.
+   * This will can be overriden by injection into the component another components html
+   */
+  @Input()
+  navbarPosition: String = 'right-of-book-normal';
 
   // When the app loads, the stateNav becomes right
    stateNav: String = 'right';
@@ -51,7 +61,6 @@ export class ButtonNavbarComponent implements OnInit {
 
     // this.state = (this.state === 'small' ? 'large' : 'small')
     this.stateNav = 'right';
-
   }
 
 }
