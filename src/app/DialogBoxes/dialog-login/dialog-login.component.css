@@ -94,6 +94,14 @@
     background-color: blue;
 }
 
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 80%;
+    margin-left: 11%;
+}
+
+
 
 
 
