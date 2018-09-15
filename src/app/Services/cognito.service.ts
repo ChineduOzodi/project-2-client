@@ -3,6 +3,8 @@ import * as AWSCognito from 'amazon-cognito-identity-js';
 import { CognitoIdToken } from 'amazon-cognito-identity-js';
 import { BehaviorSubject } from 'rxjs';
 
+// blackapple
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,8 +20,8 @@ export class CognitoService {
   */
   constructor() {
     const poolData = {
-      UserPoolId : 'us-east-2_1gxC74pTz',
-      ClientId : '387jgqg6g55k6pqf50tbf939vj'
+      UserPoolId: 'us-east-2_1gxC74pTz',
+      ClientId: '387jgqg6g55k6pqf50tbf939vj'
     };
 
     this.userPool = new AWSCognito.CognitoUserPool(poolData);
@@ -38,7 +40,7 @@ export class CognitoService {
   */
   registerUser(email: string, username: string, password: string, firstName: string, lastName: string): BehaviorSubject<object> {
     console.log('[LOG] - In CognitoService.registerUser()');
-    console.log ('password = ' + password);
+    console.log('password = ' + password);
 
     const attributeList = [];
 
@@ -47,6 +49,11 @@ export class CognitoService {
     const emailData = {
       Name: 'email',
       Value: email
+    };
+
+    const userNameData = {
+      Name: 'preferred_username',
+      Value: username
     };
 
     const firstNameData = {
@@ -61,18 +68,20 @@ export class CognitoService {
 
     // Wrap up the data objects as cognito user attributes
     const emailAttribute = new AWSCognito.CognitoUserAttribute(emailData);
+    const userNameAttribute = new AWSCognito.CognitoUserAttribute(userNameData);
     const firstNameAttribute = new AWSCognito.CognitoUserAttribute(firstNameData);
     const lastNameAttribute = new AWSCognito.CognitoUserAttribute(lastNameData);
 
     // Add everything to the list of attributes
     attributeList.push(emailAttribute);
+    attributeList.push(userNameAttribute);
     attributeList.push(firstNameAttribute);
     attributeList.push(lastNameAttribute);
 
     // Attempt to add the new user to the pool
     console.log('[LOG] cognito.service - attempting to add user ' + firstName);
     const resultStream = new BehaviorSubject<object>(null);
-    this.userPool.signUp( username , password, attributeList, null,
+    this.userPool.signUp(email, password, attributeList, null,
       (error, result) => {
         if (error) {
           console.log('[LOG] cognito.service - error occured');
@@ -113,11 +122,11 @@ export class CognitoService {
     const resultStream = new BehaviorSubject<object>(null);
 
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function(session: AWSCognito.CognitoUserSession) {
+      onSuccess: function (session: AWSCognito.CognitoUserSession) {
         console.log('[LOG] - Cognito login succeeded');
         resultStream.next(session.getIdToken());
       },
-      onFailure: function(err: any) {
+      onFailure: function (err: any) {
         console.log('[ERROR] - Failed to authenticate user');
         resultStream.next(err);
       }
