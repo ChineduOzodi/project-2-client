@@ -18,7 +18,7 @@
     <input matInput placeholder='Preferred Password' formControlName='password' required>
   </mat-form-field>
   <mat-form-field>
-      <input matInput placeholder='Confirm Password' formControlName='confirmPassword' (keyup)='passValid()' required>
+      <input matInput placeholder='Confirm Password' formControlName='confirmPassword' (keyup)="passValid(registrationForm.get('confirmPassword').value)" required>
     </mat-form-field>
 
     <mat-form-field>
