@@ -81,7 +81,7 @@ export class CognitoService {
     // Attempt to add the new user to the pool
     console.log('[LOG] cognito.service - attempting to add user ' + firstName);
     const resultStream = new BehaviorSubject<object>(null);
-    this.userPool.signUp(email, password, attributeList, null,
+    this.userPool.signUp(username, password, attributeList, null,
       (error, result) => {
         if (error) {
           console.log('[LOG] cognito.service - error occured');

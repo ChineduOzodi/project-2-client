@@ -23,7 +23,7 @@ export class DialogRegistrationComponent implements OnInit {
 
     email: new FormControl('', Validators.compose([
       Validators.required
-    //  , Validators.email
+     , Validators.email
     ])),
 
     password: new FormControl('', Validators.compose([
@@ -124,7 +124,7 @@ export class DialogRegistrationComponent implements OnInit {
       const password = this.registrationForm.get('password').value;
       const firstName = this.registrationForm.get('firstName').value;
       const lastName = this.registrationForm.get('lastName').value;
-      this.cognitoService.registerUser(username, email, password, firstName, lastName)
+      this.cognitoService.registerUser(email, username, password, firstName, lastName)
         .subscribe(result => {
           if (result) {
             // is there a response?
@@ -134,8 +134,8 @@ export class DialogRegistrationComponent implements OnInit {
             } else { // no error, so, create user.
               const user: User = {
                 username: username,
-                f_name: firstName,
-                l_name: lastName,
+                firstname: firstName,
+                lastname: lastName,
                 email: email,
                 password: password
 
