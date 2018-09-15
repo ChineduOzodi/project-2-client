@@ -9,14 +9,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTreeModule} from '@angular/material/tree';
 
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
                 MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
-                MatExpansionModule],
+                MatExpansionModule, MatCardModule, MatProgressBarModule, MatTreeModule],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
                 MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
-                MatExpansionModule],
+                MatExpansionModule, MatCardModule, MatProgressBarModule, MatTreeModule],
 })
 export class MaterialModule { }

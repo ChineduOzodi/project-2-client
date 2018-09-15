@@ -18,6 +18,7 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
 import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
 import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
 import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
+import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/di
     DialogRegistrationComponent,
     ButtonNavbarComponent,
     DialogSearchNutriComponent,
-    RecipeComponent
+    RecipeComponent,
+    DialogEditUserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/di
   entryComponents: [
     DialogRegistrationComponent,
     DialogLoginComponent,
-    DialogSearchNutriComponent
+    DialogSearchNutriComponent,
+    DialogEditUserInfoComponent
   ],
   providers: [CognitoService, UserService],
   bootstrap: [AppComponent]
