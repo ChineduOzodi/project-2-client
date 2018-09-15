@@ -1,60 +1,57 @@
-<<<<<<< HEAD
 <img src="../../../assets/Images/readbutton.png">
 <mat-form-field>
-    <input matInput value="Alex Moraga" placeholder="Name" #name>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea" #action></textarea>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <mat-dialog-actions>
-    <button mat-button>Cancel</button>
-    <button mat-raisee-button (click)="logMeIn(name.value)">Log In</button>
-  </mat-dialog-actions>
-=======
+  <input matInput value="Alex Moraga" placeholder="Name" #name>
+</mat-form-field>
+
+<mat-form-field>
+  <textarea matInput placeholder="Textarea" #action></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Select">
+    <mat-option value="option">Option</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-dialog-actions>
+  <button mat-button>Cancel</button>
+  <button mat-raisee-button (click)="logMeIn(name.value)">Log In</button>
+</mat-dialog-actions>
 <div>
-<mat-card>
-  <mat-card-header>
+  <mat-card>
+    <mat-card-header>
 
-    <mat-card-title>
-      <h2>{{Message}}</h2>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="loginForm">
-      <!-- username input field -->
-      <mat-form-field class='col-9'>
-        <input matInput name="email" placeholder='enter email' type="email" formControlName="email">
+      <mat-card-title>
+        <h2>{{Message}}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+        <!-- username input field -->
+        <mat-form-field class='col-9'>
+          <input matInput name="email" placeholder='enter email' type="email" formControlName="email">
 
-            <mat-error *ngIf="loginValidationMessages">{{loginValidationMessages.message}}</mat-error>
-      </mat-form-field>
-      <!-- username input field end -->
-      <br/>
-      <mat-form-field class='col-9'>
-        <input matInput name="password" placeholder='enter password' type="password" formControlName="password">
+          <mat-error *ngIf="loginValidationMessages">{{loginValidationMessages.message}}</mat-error>
+        </mat-form-field>
+        <!-- username input field end -->
+        <br />
+        <mat-form-field class='col-9'>
+          <input matInput name="password" placeholder='enter password' type="password" formControlName="password">
 
-      </mat-form-field>
-    </form>
-    <mat-toolbar #buttonRow>
-      <button mat-raised-button name='login' color='primary' (click)='login()'>Submit</button>
-    </mat-toolbar>
+        </mat-form-field>
+      </form>
+      <mat-toolbar #buttonRow>
+        <button mat-raised-button name='login' color='primary' (click)='login()'>Submit</button>
+      </mat-toolbar>
 
-    <!-- didnt add divs here, seem't useless? -->
+      <!-- didnt add divs here, seem't useless? -->
 
-    <div *ngIf='errorMessage' role='alert'>
-      {{errorMessage}}
-    </div>
-    <div *ngIf='infoMessage' role='alert'>
-      {{infoMessage}}
-    </div>
-  </mat-card-content>
-</mat-card>
+      <div *ngIf='errorMessage' role='alert'>
+        {{errorMessage}}
+      </div>
+      <div *ngIf='infoMessage' role='alert'>
+        {{infoMessage}}
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
->>>>>>> fixmepls
