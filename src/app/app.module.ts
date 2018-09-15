@@ -10,7 +10,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { UserDashboardComponent } from './Pages/user-dashboard/user-dashboard.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { AppRoutingModule } from './app.routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
@@ -18,7 +18,8 @@ import { RegistrationComponent } from './Pages/registration/registration.compone
 import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/dialog-registration.component';
 import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
 import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
-
+import { MatCardModule } from '@angular/material';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,12 @@ import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/di
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatCardModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     DialogRegistrationComponent,

@@ -1,18 +1,40 @@
+<mat-card>
+<mat-card-header>
+  <mat-card-title>
+<h2>Register Here</h2>
+  </mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <form [formGroup]='registrationForm'>
 <mat-form-field>
-  <input matInput value="Alex Moraga" placeholder="Name" #name>
+  <input matInput placeholder='Preferred Username' formControlName='userName' required>
+</mat-form-field>
+<br/>
+<mat-form-field>
+  <input type='email' matInput placeholder='Healthy@me.com' formControlName='email' required>
 </mat-form-field>
 
 <mat-form-field>
-  <textarea matInput placeholder="Textarea"></textarea>
-</mat-form-field>
+    <input matInput placeholder='Preferred Password' formControlName='password' required>
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput placeholder='Confirm Password' formControlName='confirmPassword' (keyup)='passValid()' required>
+    </mat-form-field>
 
-<mat-form-field>
-  <mat-select placeholder="Select">
-    <mat-option value="option">Option</mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder='Your First Name?' formControlName='firstName' required> 
+      </mat-form-field>
 
-<mat-dialog-actions>
-  <button mat-button>Cancel</button>
-  <button mat-raisee-button (click)="register()">Register</button>
-</mat-dialog-actions>
+      <mat-form-field>
+          <input matInput placeholder='Your Last Name?' formControlName='lastName' required> 
+        </mat-form-field>
+
+  </form>
+  <div *ngIf='errorMessage' role='alert'> 
+    {{errorMessage}}
+  </div>
+  <mat-toolbar #buttonRow>
+    <button (click)='register()'>Register</button>
+  </mat-toolbar>
+</mat-card-content>
+</mat-card>
