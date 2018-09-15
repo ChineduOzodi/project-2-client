@@ -11,7 +11,7 @@ const HTTP_OPTIONS = {
   })
 };
 
-const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +51,7 @@ export class UserService {
   */
   register(user: User): Observable<User> {
     console.log('[LOG] - In UserService.register()');
-    return this.http.post<User>(apiUrl + 'users', JSON.stringify(user), HTTP_OPTIONS);
+    return this.http.post<User>(apiUrl + 'register', user, HTTP_OPTIONS);
   }
 
   /**
