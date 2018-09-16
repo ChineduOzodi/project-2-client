@@ -1,5 +1,3 @@
-import { FoodInfoTablComponent } from './food-info-tabl/food-info-tabl.component';
-import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
 // Used for navigation, like href
 import { FrontpageComponent } from './Pages/frontpage/frontpage.component';
 import { RecipeComponent } from './Components/recipe/recipe.component';
@@ -15,8 +13,7 @@ const routes: Routes = [
     {path: 'home', component: DashboardComponent},
     {path: 'userDash', component: UserDashboardComponent},
     {path: 'cart', component: CartComponent},
-    {path: 'recipe', component: RecipeComponent},
-    {path: 'test', component: FoodInfoTablComponent}
+    {path: 'recipe', component: RecipeComponent}
 ];
 
 @NgModule({

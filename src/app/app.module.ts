@@ -21,7 +21,6 @@ import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info
 import { MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
-import { FoodInfoTablComponent } from './food-info-tabl/food-info-tabl.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { FoodInfoTablComponent } from './food-info-tabl/food-info-tabl.component
     DialogSearchNutriComponent,
     RecipeComponent,
     DialogEditUserInfoComponent,
-    FoodInfoTableComponent,
-    FoodInfoTablComponent
+    FoodInfoTableComponent
   ],
   imports: [
     BrowserModule,

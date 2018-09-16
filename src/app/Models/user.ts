@@ -9,4 +9,8 @@ export class User {
     weight?: number;
     age?: number;
     sex?: number;
+    setProtien: number;
+    setCarbs: number;
+    setFats: number;
+    setFiber: number;
 }
