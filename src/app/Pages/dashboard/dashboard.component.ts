@@ -55,7 +55,7 @@ import { UserService } from '../../Services/user.service';
 
 export class DashboardComponent implements OnInit {
 
-  userName: String = 'Alex Moraga';
+  userName: String = 'User Name Here';
 
   state: String = 'state1';
 
@@ -67,9 +67,9 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.userService.verifyUser();
     this.state = 'state1';
     this.stateOne = 'state2';
-    this.userService.verifyUser();
   }
 
   openEditInfo(): void {

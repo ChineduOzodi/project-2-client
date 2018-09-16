@@ -75,10 +75,22 @@ export class UserService {
    */
   verifyUser() {
     if (sessionStorage.getItem('user')) {
-      // this.userService.user.next(JSON.parse(sessionStorage.getItem('user')));
       console.log('User session active');
+      if (!this.user.value) {
+        this.user.next(JSON.parse(sessionStorage.getItem('user')));
+        console.log('Retrieved user from session');
+      }
     } else {
-      this.router.navigate(['userDash']);
+      this.router.navigate(['']);
     }
+  }
+
+  /**
+   * Clears the sessionStorage, service.user, and redirects to the login/register page
+   */
+  logoutUser() {
+    sessionStorage.clear();
+    this.user.next(null);
+    this.router.navigate(['']);
   }
 }
