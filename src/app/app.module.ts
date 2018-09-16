@@ -18,7 +18,7 @@ import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/d
 import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
 import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
 
@@ -28,7 +28,6 @@ import { FoodInfoTableComponent } from './food-info-table/food-info-table.compon
     RecipeComponent,
     DashboardComponent,
     UserDashboardComponent,
-    DialogLoginComponent,
     CartComponent,
     FrontpageComponent,
     DialogRegistrationComponent,
@@ -36,6 +35,7 @@ import { FoodInfoTableComponent } from './food-info-table/food-info-table.compon
     DialogSearchNutriComponent,
     RecipeComponent,
     DialogEditUserInfoComponent,
+    DialogLoginComponent,
     FoodInfoTableComponent
   ],
   imports: [
@@ -48,7 +48,10 @@ import { FoodInfoTableComponent } from './food-info-table/food-info-table.compon
     MaterialModule,
     FormsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [
     DialogRegistrationComponent,

@@ -1,5 +1,3 @@
-import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../Services/data.service';
@@ -7,6 +5,8 @@ import { CoreNutrients } from '../../Objects/CoreNutrients';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
 import { Nutrient } from '../../Models/nutrient';
 import { Measures } from '../../Models/measures';
+import { ItemList } from '../../Models/itemList';
+import { ItemDescription } from '../../Models/itemDescription';
 
 
 @Component({
@@ -45,16 +45,15 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
+  searchColumns = ['ndbno', 'name', 'manu', 'buttons'];
+  specificColumns = ['nutrient', 'amount', 'percentage', 'buttons'];
+  foodProfile: ItemDescription;
 
   // User's item
-  item: Item[];
-
-  displayedColumns = ['name', 'manu'];
-
+  ItemList: ItemList[];
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
-
 
   totalNutrients =
     [539, 269, 208, 203, 204,
@@ -65,7 +64,6 @@ export class DialogSearchNutriComponent implements OnInit {
       418, 578, 318, 320, 323,
       573, 324, 430, 606, 645,
       646, 605, 601]; // Future Implementation of nutrition.
-
 
   constructor(private ds: DataService) { }
 
@@ -90,6 +88,9 @@ export class DialogSearchNutriComponent implements OnInit {
   search(string, select) {
     this.ds.searchData(string, select).subscribe((search: any) => {
       this.itemList = search.list.item;
+      // User's search
+      this.ItemList = search.list.item;
+
     });
   }
 
@@ -104,7 +105,7 @@ export class DialogSearchNutriComponent implements OnInit {
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
-
+      this.foodProfile = selected.foods[0];
 
 
     }
@@ -126,5 +127,4 @@ const y = x.nutrient_id;
     }
 
   }
-
 }
