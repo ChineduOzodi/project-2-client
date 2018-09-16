@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { loadQueryList } from '@angular/core/src/render3/instructions';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-button-navbar',
@@ -52,15 +53,20 @@ export class ButtonNavbarComponent implements OnInit {
   // When the app loads, the stateNav becomes right
    stateNav: String = 'right';
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
   moveMeRight() {
-
-    // this.state = (this.state === 'small' ? 'large' : 'small')
     this.stateNav = 'right';
+  }
+
+  /**
+   * Calls the logout function in the service class
+   */
+  logout() {
+    this.userService.logoutUser();
   }
 
 }

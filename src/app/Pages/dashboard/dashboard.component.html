@@ -20,7 +20,7 @@
                     
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-card-title>{{userName}}</mat-card-title>
+                    <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' + this.userService.user.value.lastname}}</mat-card-title>
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>

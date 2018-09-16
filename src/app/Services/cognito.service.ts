@@ -101,17 +101,17 @@ export class CognitoService {
   /**
    * This method attempts to sign in the user. If the user is in the pool,
    * it returns a CognitoIdToken. Otherwise it returns an error object.
-   * @param email The email address that the user entered
+   * @param username The username that the user entered
    * @param password The password that the user entered
    */
-  signIn(email: string, password: string): BehaviorSubject<object> {
+  signIn(username: string, password: string): BehaviorSubject<object> {
     const userData = {
-      Username: email,
+      Username: username,
       Pool: this.userPool
     };
 
     const authenticationData = {
-      Username: email,
+      Username: username,
       Password: password
     };
 
