@@ -5,6 +5,7 @@ import { CoreNutrients } from '../../Objects/CoreNutrients';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
 import { Nutrient } from '../../Models/nutrient';
 import { Measures } from '../../Models/measures';
+import { Item } from '../../Models/item';
 
 
 @Component({
@@ -38,12 +39,16 @@ import { Measures } from '../../Models/measures';
 export class DialogSearchNutriComponent implements OnInit {
 
   foodgroups: ''; // 1.02 Select Dropdown
+
   itemList: any;
   selectedMeasure: string; // measure for 1.06
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
   displayedColumns: string[] = ['Nutrient', 'name', 'weight', 'symbol'];
+
+  // User's item
+  item: Item[];
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
@@ -83,6 +88,10 @@ export class DialogSearchNutriComponent implements OnInit {
   search(string, select) {
     this.ds.searchData(string, select).subscribe((search: any) => {
       this.itemList = search.list.item;
+
+      // User's search
+      this.item = search.list.item;
+
     });
   }
 
