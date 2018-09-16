@@ -104,7 +104,7 @@ export class DialogSearchNutriComponent implements OnInit {
     // setting the JSON data to obj 'selected'
     this.ds.specificData(data).subscribe((selected: any) => {
 
-      this.AllNutrient = selected.foods[0].food.nutrients; // array of details for individual items
+      this.AllNutrient = selected.foods[0].food; // array of details for individual items
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
@@ -112,6 +112,12 @@ console.log(selected.foods[0].food);
 
     }
     );
+  }
+
+  // Save resulting item from the 'moreData()' func.
+  saveItem(ndbno) {
+
+console.log(ndbno.desc.ndbno);
   }
 
 
@@ -129,4 +135,5 @@ const y = x.nutrient_id;
     }
 
   }
+  
 }
