@@ -55,7 +55,7 @@ export class UserService {
   */
   register(user: User): Observable<User> {
     console.log('[LOG] - In UserService.register()');
-    return this.http.post<User>(apiUrl + 'users', user, HTTP_OPTIONS);
+    return this.http.post<User>(apiUrl + 'register', user, HTTP_OPTIONS);
   }
 
   /**
