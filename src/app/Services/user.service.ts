@@ -12,7 +12,7 @@ const HTTP_OPTIONS = {
   })
 };
 
-const apiUrl = 'http://localhost:8080/';
+const apiUrl = 'http://18.223.28.74:8080/';
 
 @Injectable({
   providedIn: 'root'
