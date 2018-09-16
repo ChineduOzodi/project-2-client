@@ -6,4 +6,5 @@ export class Item {
     ndbno?: any;
     ds?: string;
     manu?: string;
+    more?: Function;
 }

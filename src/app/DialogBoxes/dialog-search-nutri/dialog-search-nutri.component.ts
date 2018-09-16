@@ -5,7 +5,7 @@ import { CoreNutrients } from '../../Objects/CoreNutrients';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
 import { Nutrient } from '../../Models/nutrient';
 import { Measures } from '../../Models/measures';
-import { Item } from '../../Models/item';
+import { ItemList } from '../../Models/itemList';
 
 
 @Component({
@@ -45,10 +45,10 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
-  displayedColumns: string[] = ['Nutrient', 'name', 'weight', 'symbol'];
-
+  displayedColumns = ['ndbno', 'name', 'manu', 'buttons'];
+  dataSource;
   // User's item
-  item: Item[];
+  ItemList: ItemList[];
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
@@ -88,10 +88,10 @@ export class DialogSearchNutriComponent implements OnInit {
   search(string, select) {
     this.ds.searchData(string, select).subscribe((search: any) => {
       this.itemList = search.list.item;
-
       // User's search
-      this.item = search.list.item;
-
+      this.ItemList = search.list.item;
+      this.ItemList.
+      console.log(this.ItemList);
     });
   }
 

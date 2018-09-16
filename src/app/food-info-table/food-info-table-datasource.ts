@@ -1,4 +1,4 @@
-import { Item } from './../Models/Item';
+import { Item } from './../Models/item';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export class FoodInfoTableDataSource extends DataSource<Item> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<Item[]> {
-    this.userItems = this.res.item;
+    this.userItems = this.res.itemList;
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
