@@ -1,10 +1,9 @@
 import { Nutrient } from './nutrient';
 
 export class ItemDescription {
-    food: {
-        sr: string;
-        type: string;
-        desc: {
+
+
+        desc?: {
             ndbno?: string;
             name?: string;
             sd?: string;
@@ -21,6 +20,10 @@ export class ItemDescription {
             ds?: string;
             ru?: string;
         };
-        nutrients: Nutrient[];
-    };
+        footnotes?: any[];
+        langual?: any[];
+        nutrients?: Nutrient[];
+        sources?: any[];
+        sr?: string;
+        type?: string;
 }

@@ -1,10 +1,9 @@
 export class Item {
 
-    offset?: number;
-    group?: string;
-    name?: string;
-    ndbno?: any;
-    ds?: string;
-    manu?: string;
-    more?: Function;
+    offset?: number; // index number
+    group?: string; // food group (fg) by number or full string. (the dropdown)
+    name?: string; // item name
+    ndbno?: any; // items identification number in the usda database
+    ds?: string; // reference type.
+    manu?: string; // manufacturer
 }

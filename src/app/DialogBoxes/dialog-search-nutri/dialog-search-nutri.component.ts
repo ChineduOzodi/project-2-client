@@ -46,8 +46,8 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
-  searchColumns = ['ndbno', 'name', 'manu', 'buttons'];
-  specificColumns = ['nutrient', 'amount', 'percentage', 'buttons'];
+  searchColumns = ['ndbno', 'name', 'manu', 'controls'];
+  specificColumns = ['nutrient', 'amount', 'percentage', 'controls'];
   foodProfile: ItemDescription;
 
   // User's item
@@ -108,8 +108,7 @@ export class DialogSearchNutriComponent implements OnInit {
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
-      this.foodProfile = selected.foods[0];
-
+console.log(selected.foods[0].food);
 
     }
     );
