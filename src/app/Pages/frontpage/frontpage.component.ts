@@ -51,14 +51,14 @@ export class FrontpageComponent implements OnInit {
   // function to re-route in ___ milliseconds
   switchPage() {
     setTimeout(() => {
-      this.router.navigate(['/login'], )}
+      this.router.navigate(['/login'], ); }
       , 1500);
   }
 
   // function to go to the registration page
   switchToRegist() {
     setTimeout(() => {
-      this.router.navigate(['/registration'], )}
+      this.router.navigate(['/registration'], ); }
       , 1500);
   }
 

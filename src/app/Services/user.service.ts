@@ -3,6 +3,7 @@ import { User } from './../Models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 const HTTP_OPTIONS = {
@@ -20,7 +21,10 @@ export class UserService {
 
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) { }
 
   /**
   * This method will get user info from the database based on
@@ -33,13 +37,13 @@ export class UserService {
   * the services are setup, the http request may not actually
   * function.
   *
-  * @param  email The user's email address
+  * @param  username The user's username
   *
   * @return       An Observable which will broadcast the BamUser when it is retrieved
   */
-  getUserByEmail(email: string): Observable<User> {
+  getUserByUsername(username: string): Observable<User> {
     console.log('[LOG] - In UserService.getUserByEmail()');
-    return this.http.get<User>(apiUrl + 'users?email=' + email, HTTP_OPTIONS);
+    return this.http.get<User>(apiUrl + 'users/login/' + username, HTTP_OPTIONS);
   }
 
   /**
@@ -62,6 +66,19 @@ export class UserService {
    */
   updateInfo(user: User): Observable<User> {
     console.log('[LOG] - In UserService.updateInfo()');
-    return this.http.put<User>(apiUrl + `users/${user.u_id}`, JSON.stringify(user),  HTTP_OPTIONS);
+    return this.http.put<User>(apiUrl + `users/${user.u_id}`, JSON.stringify(user), HTTP_OPTIONS);
+  }
+
+  /**
+   * Verifies that there is an active user session. If there is and the user info is missing,
+   * will set local User data. If not will redirect to login/registration page
+   */
+  verifyUser() {
+    if (sessionStorage.getItem('user')) {
+      // this.userService.user.next(JSON.parse(sessionStorage.getItem('user')));
+      console.log('User session active');
+    } else {
+      this.router.navigate(['userDash']);
+    }
   }
 }

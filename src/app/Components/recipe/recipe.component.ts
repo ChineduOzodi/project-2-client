@@ -1,3 +1,4 @@
+import { UserService } from './../../Services/user.service';
 import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
@@ -45,9 +46,15 @@ export class RecipeComponent implements OnInit {
   // When the app loads, the state becomes small
   state: String = 'small';
 
-  ngOnInit() {}
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+    ) { }
 
-  constructor(public dialog: MatDialog) { }
+  ngOnInit() {
+    this.userService.verifyUser();
+  }
+
   openSearchNutri() {
     const dialogRef = this.dialog.open(DialogSearchNutriComponent,
       {

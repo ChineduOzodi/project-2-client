@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl} from '@angular/cdk/tree';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -60,11 +61,15 @@ export class DashboardComponent implements OnInit {
 
   stateOne: String = 'state2';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.state = 'state1';
     this.stateOne = 'state2';
+    this.userService.verifyUser();
   }
 
   openEditInfo(): void {
