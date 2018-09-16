@@ -33,28 +33,36 @@
 
     </div> -->
 
-  <div class="mat-elevation-z8">
-    <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
-      <!-- Id Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let row">{{row.name}}</td>
-      </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="manu">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
-        <td mat-cell *matCellDef="let row">{{row.manu}}</td>
-      </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+
+  <!--1.01 Title and Search GUI END -->
+  <div id='left'>
+    <!--1.03 LEFT TABLE WITH SEARCH RESULTS DATA SET -->
+    <table mat-table class="table">
+      <thead>
+        <tr mat-header-row>
+          <!-- <th scope="col">Index</th> -->
+          <th mat-header-cell scope="col">Name</th>
+          <th mat-header-cell>Manufacturer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <th scope="row"></th>
+        <!--1.04 THIS FUNCTION ACTIVATES THE INDIVIDUAL RESULTS TABLE AN ITEM. -->
+        <tr *ngFor="let item of itemList; let i = index" [@listAnimation]="itemList">
+          <!-- <td>{{i}}</td> -->
+          <td>{{item.name}}</td>
+          <td>{{item.manu}}</td>
+          <button mat-button (click)='moreData(item.ndbno)'>
+            <mat-icon md-48>info</mat-icon>
+          </button>
+        </tr>
+        <!-- 1.04 END OF ACTIVATOR -->
+      </tbody>
     </table>
-
-    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
-    </mat-paginator>
-  </div>
-  
+    <!--1.03 END OF LEFT TABLE. -->
 
 
     <!-- 1.05 RESULTS TABLE -->
@@ -70,27 +78,27 @@
               <th scope="col">#</th>
               <th scope="col">ID</th>
               <th>
-                <mat-form-field>
-                  <mat-select placeholder="Measurement" [(ngModel)]="selectedMeasure">
-                    <mat-option *ngFor="let m of Measures; let i = index;" value='{{Measures[i].label}}'>{{Measures[i].label}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
+                  <mat-form-field>
+                      <mat-select placeholder="Measurement" [(ngModel)]="selectedMeasure">
+                        <mat-option *ngFor="let m of Measures; let i = index;" value='{{Measures[i].label}}'  >{{Measures[i].label}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
               </th>
             </tr>
           </thead>
 
           <tbody>
-
+            
             <span *ngFor="let nut of AllNutrient; let i = index;">
-              <tr *ngIf="checkFilter(nut)">
-                <td>{{nut.name}}</td>
+            <tr *ngIf="checkFilter(nut)">
+                <td>{{nut.name}}</td> 
                 <span *ngFor='let m of nut.measures'>
                   <td *ngIf='m.label==selectedMeasure'>{{m.value}}[{{m.eunit}}]</td>
                 </span>
                 <td>{{nut.nutrient_id}}</td>
               </tr>
             </span>
-
+                  
 
 
 
@@ -98,17 +106,15 @@
           </tbody>
         </table>
       </div>
-
+      
 
 
 
     </mat-dialog-content>
-
-
-
-
+    
     <!--1.05 END OF RESULTS TABLE -->
-    <!-- </div> -->
+  </div>
+  <!-- </div> -->
 
 </mat-dialog-content>
 <mat-dialog-actions>
