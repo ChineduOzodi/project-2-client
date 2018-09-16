@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService
+    public userService: UserService
     ) { }
 
   ngOnInit() {
