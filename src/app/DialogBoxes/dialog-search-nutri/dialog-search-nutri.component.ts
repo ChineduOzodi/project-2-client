@@ -1,3 +1,5 @@
+import { DataSource } from '@angular/cdk/collections';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../Services/data.service';
@@ -43,7 +45,12 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
-  displayedColumns: string[] = ['Nutrient', 'name', 'weight', 'symbol'];
+
+  // User's item
+  item: Item[];
+
+  displayedColumns = ['name', 'manu'];
+
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
@@ -119,4 +126,5 @@ const y = x.nutrient_id;
     }
 
   }
+
 }

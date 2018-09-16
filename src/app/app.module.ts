@@ -20,6 +20,7 @@ import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/di
 import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
 import { MatCardModule } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ButtonNavbarComponent,
     DialogSearchNutriComponent,
     RecipeComponent,
-    DialogEditUserInfoComponent
+    DialogEditUserInfoComponent,
+    FoodInfoTableComponent
   ],
   imports: [
     BrowserModule,
