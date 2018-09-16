@@ -6,6 +6,7 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
 import { Nutrient } from '../../Models/nutrient';
 import { Measures } from '../../Models/measures';
 import { ItemList } from '../../Models/itemList';
+import { ItemDescription } from '../../Models/itemDescription';
 
 
 @Component({
@@ -45,8 +46,10 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
-  displayedColumns = ['ndbno', 'name', 'manu', 'buttons'];
-  dataSource;
+  searchColumns = ['ndbno', 'name', 'manu', 'buttons'];
+  specificColumns = ['nutrient', 'amount', 'percentage', 'buttons'];
+  foodProfile: ItemDescription;
+
   // User's item
   ItemList: ItemList[];
 
@@ -90,8 +93,7 @@ export class DialogSearchNutriComponent implements OnInit {
       this.itemList = search.list.item;
       // User's search
       this.ItemList = search.list.item;
-      this.ItemList.
-      console.log(this.ItemList);
+
     });
   }
 
@@ -106,7 +108,7 @@ export class DialogSearchNutriComponent implements OnInit {
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
-
+      this.foodProfile = selected.foods[0];
 
 
     }
