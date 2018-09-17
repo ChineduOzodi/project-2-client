@@ -31,9 +31,9 @@
 
     </mat-grid-tile-header>
     <mat-grid-tile class="border border-success">
-      <mat-dialog-content *ngIf='ItemList'>
+      <mat-dialog-content  *ngIf='ItemList'>
         <div class="mat-elevation-z8">
-          <table mat-table #table [dataSource]="ItemList">
+          <table mat-table #table [@listAnimation]="ItemList.length" [dataSource]="ItemList">
             <!-- Id Column -->
             <ng-container matColumnDef="ndbno">
               <th mat-header-cell *matHeaderCellDef>Item No.</th>
@@ -73,7 +73,7 @@
         <div class="mat-elevation-z8">
 
 
-          <table mat-table #details [dataSource]="AllNutrient.nutrients">
+          <table mat-table #details [@listAnimation]="AllNutrient.length" [dataSource]="AllNutrient.nutrients">
 
             <ng-container matColumnDef="nutrient">
               <th mat-header-cell *matHeaderCellDef>Nutrient</th>
