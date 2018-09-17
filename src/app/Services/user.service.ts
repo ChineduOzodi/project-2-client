@@ -1,3 +1,4 @@
+import { FoodService } from './food.service';
 import { environment } from './../../environments/environment';
 import { User } from './../Models/user';
 import { Injectable } from '@angular/core';
@@ -21,10 +22,14 @@ export class UserService {
 
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
+  totalProtein: number;
+  totalCarbs: number;
+  totalFats: number;
+  totalFiber: number;
+
   constructor(
     private router: Router,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) { }
 
   /**
   * This method will get user info from the database based on
@@ -43,7 +48,7 @@ export class UserService {
   */
   getUserByUsername(username: string): Observable<User> {
     console.log('[LOG] - In UserService.getUserByEmail()');
-    return this.http.get<User>(apiUrl + 'users/login/' + username, HTTP_OPTIONS);
+    return this.http.get<User>(apiUrl + 'users/login/' + username + '/', HTTP_OPTIONS);
   }
 
   /**
@@ -55,7 +60,7 @@ export class UserService {
   */
   register(user: User): Observable<User> {
     console.log('[LOG] - In UserService.register()');
-    return this.http.post<User>(apiUrl + 'register', user, HTTP_OPTIONS);
+    return this.http.post<User>(apiUrl + 'users/', user, HTTP_OPTIONS);
   }
 
   /**
@@ -66,7 +71,8 @@ export class UserService {
    */
   updateInfo(user: User): Observable<User> {
     console.log('[LOG] - In UserService.updateInfo()');
-    return this.http.put<User>(apiUrl + `users/${user.u_id}`, JSON.stringify(user), HTTP_OPTIONS);
+    console.log(user);
+    return this.http.put<User>(apiUrl + `users/${user.uId}/`, JSON.stringify(user), HTTP_OPTIONS);
   }
 
   /**

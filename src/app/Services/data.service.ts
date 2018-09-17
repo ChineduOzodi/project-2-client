@@ -70,7 +70,7 @@ export class DataService {
     this.num = ndbno;
     ndbno = `ndbno=${this.num}`;
     this.api = this.reportsURL + ndbno;
-    return this.http.get<Object[]>(this.api);
+    return this.http.get<any>(this.api);
   }
 }
 

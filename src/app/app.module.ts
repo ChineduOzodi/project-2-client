@@ -18,8 +18,10 @@ import { DialogRegistrationComponent } from './DialogBoxes/dialog-registration/d
 import { ButtonNavbarComponent } from './Components/button-navbar/button-navbar.component';
 import { DialogSearchNutriComponent } from './DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatRadioButton, MatRadioGroup } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
+import { DialogAddToCatergoryComponent } from './DialogBoxes/dialog-add-to-catergory/dialog-add-to-catergory.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +29,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     RecipeComponent,
     DashboardComponent,
     UserDashboardComponent,
-    DialogLoginComponent,
     CartComponent,
     FrontpageComponent,
     DialogRegistrationComponent,
     ButtonNavbarComponent,
     DialogSearchNutriComponent,
     RecipeComponent,
-    DialogEditUserInfoComponent
-  ],
+    DialogEditUserInfoComponent,
+    DialogLoginComponent,
+    FoodInfoTableComponent,
+    DialogAddToCatergoryComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,13 +50,18 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MaterialModule,
     FormsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+
+    MatSortModule
   ],
   entryComponents: [
     DialogRegistrationComponent,
     DialogLoginComponent,
     DialogSearchNutriComponent,
-    DialogEditUserInfoComponent
+    DialogEditUserInfoComponent,
+    DialogAddToCatergoryComponent
   ],
   providers: [CognitoService, UserService],
   bootstrap: [AppComponent]

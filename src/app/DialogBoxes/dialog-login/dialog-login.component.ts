@@ -54,7 +54,7 @@ export class DialogLoginComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('user')) {
       this.userService.user.next(JSON.parse(sessionStorage.getItem('user')));
-      this.router.navigate(['userDash']);
+      this.router.navigate(['home']);
     }
     /*
     New User Registration message,
@@ -108,6 +108,9 @@ this.loginForm.get('password').errors
                   console.log('Logged in and hit database');
                   this.dialogRef.close('Logged in.');
                   this.router.navigate(['home']);
+                  this.loginSnackBar.open(this.userService.user.value.firstname, 'has logged in!', {
+                    duration: 2000,
+                  });
                 }
               }
             );
@@ -117,17 +120,6 @@ this.loginForm.get('password').errors
     }
   }
 
-  redirectMe() {
-    this.switchPage();
-  }
-
-  // function to re-route in ___ milliseconds
-  switchPage() {
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }
-      , 1500);
-  }
 
   // For the Login SnackBar
   logMeIn(name: string) {
@@ -138,8 +130,6 @@ this.loginForm.get('password').errors
     // To close the dialog box and submit data
     this.dialogRef.close('Some information is going to be passed in here, either JSON or a String');
 
-    // method from frontPageComponent to redirect page to dashboard
-    this.redirectMe();
 
   }
 }

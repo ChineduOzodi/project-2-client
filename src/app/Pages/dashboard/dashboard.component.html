@@ -9,7 +9,7 @@
 
             <!-- User's Profile Card -->
             <mat-card class="example-card">
-                
+
                 <mat-card-header>
                     <!-- Edit info/macro button -->
                     <button class="edit" mat-button (click)='openEditInfo()'>
@@ -17,35 +17,39 @@
                     </button>
                     <div mat-card-avatar class="example-header-image"></div>
 
-                    
+
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' + this.userService.user.value.lastname}}</mat-card-title>
+                    <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' +
+                        this.userService.user.value.lastname}}{{user.firstname}}</mat-card-title>
+                    <mat-card-title>
+
+                    </mat-card-title>
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{ProteinVal.value}}/ 200g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalProtein}}/ {{myUser.protein}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="160" #ProteinVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalProtein / myUser.protein))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Carbohydrates </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{CarbVal.value}}/ 310g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalCarbs}}/ {{myUser.carbohydrates}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="95" #CarbVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalCarbs / myUser.carbohydrates))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fats </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{FatsVal.value}}/ 65g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFats}}/ {{myUser.fat}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="45" #FatsVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFats / myUser.fat))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fibre </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{FiberVal.value}}/ 40g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFiber}}/ {{myUser.fiber}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="27" #FiberVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFiber / myUser.fiber))"></mat-progress-bar>
                     </mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions>
@@ -53,12 +57,108 @@
                     <button mat-button>SHARE</button>
                 </mat-card-actions>
             </mat-card>
-            
+
+            <!-- Calander -->
+            <mat-card class="calander">
+                <div>
+                    <mat-form-field color="warm">
+                        <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date"
+                            disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+
+                            <!-- If you want to add a custom icon -->
+                            <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </mat-card>
+            <!-- BreakFast, Lunch and Dinner -->
+            <div class="dropdowns">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Breakfast
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} Text on opening and closing-->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios/50/000000/cinnamon-roll.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 1">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
+
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Lunch
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios-glyphs/50/000000/wrap.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 2">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dinner
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios/50/000000/food-and-wine-filled.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 3">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
 
         </a>
 
         <!-- Closed Book Image -->
-        <a [@disappearClosedBook]="stateOne" class="logos"></a>
+        <!-- <a [@disappearClosedBook]="stateOne" class="logos"></a> -->
 
 
     </div>

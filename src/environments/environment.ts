@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  dbUrl: 'http://localhost:8080/',
+  acceptableNutrients: [601, 307, 291, 205, 204, 203, 208, 269] // 1.07 Filter Array
 };
 
 /*
