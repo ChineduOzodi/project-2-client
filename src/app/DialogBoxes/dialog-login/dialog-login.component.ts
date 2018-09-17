@@ -54,7 +54,7 @@ export class DialogLoginComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('user')) {
       this.userService.user.next(JSON.parse(sessionStorage.getItem('user')));
-      this.router.navigate(['userDash']);
+      this.router.navigate(['home']);
     }
     /*
     New User Registration message,
