@@ -25,8 +25,8 @@ import { ItemDescription } from '../../Models/itemDescription';
       state('small', style({
         width: 120, transform: 'scale(1.2) translateX(0)', opacity: 1
       })),
-      state('large', style({
-        transform: 'scale(1.2)',
+      state('fadeIn', style({
+        transform: 'translateX(70%)', opacity: 1
       })),
 
       // To open the book and zoom in when page is switched
@@ -53,6 +53,9 @@ export class SearchComponent implements OnInit {
   navbarPosition: String = 'right-of-book-zoomed';
   // When the app loads, the state becomes small
   state: String = 'small';
+
+
+  stateOne: String = 'fadeIn';
 
   // <------------------------------------------Search Function
 
@@ -171,16 +174,17 @@ export class SearchComponent implements OnInit {
   }
 
   // Add Category
-  // openAddCategory() {
-  //   const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
-  //     {
-  //       width: '80%'
-  //     });
+  openAddCategory() {
+    const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
+      {
+        width: '80%'
+      });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
 
 
