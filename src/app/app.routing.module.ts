@@ -6,6 +6,8 @@ import { UserDashboardComponent } from './Pages/user-dashboard/user-dashboard.co
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SearchComponent } from './Components/search/search.component';
+
 
 
 const routes: Routes = [
@@ -13,7 +15,8 @@ const routes: Routes = [
     {path: 'home', component: DashboardComponent},
     {path: 'userDash', component: UserDashboardComponent},
     {path: 'cart', component: CartComponent},
-    {path: 'search', component: RecipeComponent}
+    {path: 'search', component: SearchComponent},
+    {path: 'recipe', component: RecipeComponent}
 ];
 
 @NgModule({
