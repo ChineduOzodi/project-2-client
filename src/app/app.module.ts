@@ -22,7 +22,6 @@ import { MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatRa
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
 import { DialogAddToCatergoryComponent } from './DialogBoxes/dialog-add-to-catergory/dialog-add-to-catergory.component';
-import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +38,8 @@ import { SearchComponent } from './Components/search/search.component';
     DialogEditUserInfoComponent,
     DialogLoginComponent,
     FoodInfoTableComponent,
-    DialogAddToCatergoryComponent,
-    SearchComponent
-  ],
+    DialogAddToCatergoryComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
