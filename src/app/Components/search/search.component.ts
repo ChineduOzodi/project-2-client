@@ -25,8 +25,13 @@ import { ItemDescription } from '../../Models/itemDescription';
       state('small', style({
         width: 120, transform: 'scale(1.2) translateX(0)', opacity: 1
       })),
+<<<<<<< HEAD
       state('fadeIn', style({
         opacity: 1
+=======
+      state('large', style({
+        transform: 'scale(1.2)',
+>>>>>>> search page completed, going to create a new branch for styling
       })),
 
       // To open the book and zoom in when page is switched
@@ -42,6 +47,7 @@ import { ItemDescription } from '../../Models/itemDescription';
           }))
         ])
       ]),
+<<<<<<< HEAD
       transition('void => fadeIn', [
         style({ opacity: 0 }),
         group([
@@ -50,6 +56,8 @@ import { ItemDescription } from '../../Models/itemDescription';
           }))
         ])
       ]),
+=======
+>>>>>>> search page completed, going to create a new branch for styling
     ])
   ]
 })
@@ -62,8 +70,11 @@ export class SearchComponent implements OnInit {
   // When the app loads, the state becomes small
   state: String = 'small';
 
+<<<<<<< HEAD
   stateOne: String = 'fadeIn';
 
+=======
+>>>>>>> search page completed, going to create a new branch for styling
   // <------------------------------------------Search Function
 
   foodgroups: ''; // 1.02 Select Dropdown
@@ -181,6 +192,7 @@ export class SearchComponent implements OnInit {
   }
 
   // Add Category
+<<<<<<< HEAD
   openAddCategory() {
     const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
       {
@@ -191,6 +203,18 @@ export class SearchComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+=======
+  // openAddCategory() {
+  //   const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
+  //     {
+  //       width: '80%'
+  //     });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
+>>>>>>> search page completed, going to create a new branch for styling
 }
 
 
