@@ -1,5 +1,5 @@
 export class Category {
     mealCatId?: number;
-    mealCatName?: number;
+    mealCatName?: string;
     uId: number;
 }

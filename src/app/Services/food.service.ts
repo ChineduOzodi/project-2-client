@@ -4,6 +4,7 @@ import { FoodDb } from './../Models/FoodDb';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { UserService } from './user.service';
+
  const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
