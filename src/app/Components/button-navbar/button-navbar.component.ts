@@ -1,3 +1,6 @@
+import { DataService } from './../../Services/data.service';
+import { MatDialog } from '@angular/material';
+import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { loadQueryList } from '@angular/core/src/render3/instructions';
 import { trigger, state, style, animate, transition, group, keyframes, query, stagger } from '@angular/animations';
@@ -53,7 +56,7 @@ export class ButtonNavbarComponent implements OnInit {
   // When the app loads, the stateNav becomes right
    stateNav: String = 'right';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public dialog: MatDialog, private ds: DataService) { }
 
   ngOnInit() {
   }
@@ -69,4 +72,14 @@ export class ButtonNavbarComponent implements OnInit {
     this.userService.logoutUser();
   }
 
+  openSearchNutri() {
+    const dialogRef = this.dialog.open(DialogSearchNutriComponent,
+      {
+        width: '80%'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

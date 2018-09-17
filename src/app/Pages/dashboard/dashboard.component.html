@@ -59,19 +59,21 @@
             </mat-card>
 
             <!-- Calander -->
-            <div class="calander">
-                <mat-form-field color="warm">
-                    <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date" disabled>
-                    <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-card class="calander">
+                <div>
+                    <mat-form-field color="warm">
+                        <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date"
+                            disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker">
 
-                        <!-- If you want to add a custom icon -->
-                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                            <!-- If you want to add a custom icon -->
+                            <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
 
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker disabled="false"></mat-datepicker>
-                </mat-form-field>
-            </div>
-
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </mat-card>
             <!-- BreakFast, Lunch and Dinner -->
             <div class="dropdowns">
                 <mat-accordion>
