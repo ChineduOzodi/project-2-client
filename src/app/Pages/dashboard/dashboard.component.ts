@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // this.userService.verifyUser();
+    this.userService.verifyUser();
     this.state = 'state1';
     this.stateOne = 'state2';
   }
