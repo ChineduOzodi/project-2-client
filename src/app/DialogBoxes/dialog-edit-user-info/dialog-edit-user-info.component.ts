@@ -10,28 +10,23 @@ import { User } from '../../Models/user';
   styleUrls: ['./dialog-edit-user-info.component.css']
 })
 export class DialogEditUserInfoComponent implements OnInit {
-  User: User;
+  user: User;
   uid;
-  constructor( public us: UserService,
+  constructor(public us: UserService,
     public dialogRef: MatDialogRef<DialogEditUserInfoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    this.uid = this.us.user.value.uId;
+    this.user = this.us.user.value;
   }
 
-
-  updateUser(fname, lname, gender, age) {
-    this.User = {
-      uId: this.uid,
-      firstname: fname,
-      lastname: lname,
-      sex: gender,
-      age: age
-    };
-    console.log(this.User);
-
-this.us.updateInfo(this.User);
-this.dialogRef.close();
+  updateUser() {
+    this.user.sex = parseInt(this.user.sex, 10);
+    console.log(this.user);
+    this.us.updateInfo(this.user).subscribe(() => {
+      this.us.user.next(this.user);
+      sessionStorage.setItem('user', JSON.stringify(this.user));
+      this.dialogRef.close();
+    });
   }
 }

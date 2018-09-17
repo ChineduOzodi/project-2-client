@@ -3,21 +3,21 @@
         <mat-card-header>Update User Information</mat-card-header>
         
         <mat-form-field class="example-full-width">
-          <input #fname matInput type="text" placeholder="First Name">
+          <input #fname matInput type="text" [(ngModel)]="user.firstname"  placeholder="First Name">
         </mat-form-field>
         <mat-form-field>
-          <input #lname matInput type="text" placeholder="Last Name">
+          <input #lname matInput type="text" [(ngModel)]="user.lastname" placeholder="Last Name">
         </mat-form-field>
         <mat-form-field>
-            <mat-select #gender placeholder="Gender">
-                <mat-option value="1">Male</mat-option>
-                <mat-option value="2">Female</mat-option>
-                <mat-option value="1">I'd Rather Not Say</mat-option>
+            <mat-select #gender [(ngModel)]="user.sex" placeholder="Gender">
+                <mat-option value=1>Male</mat-option>
+                <mat-option value=2>Female</mat-option>
+                <mat-option value=1>I'd Rather Not Say</mat-option>
               </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input #age matInput type="number" placeholder="Age">
+          <input #age matInput type="number" [(ngModel)]="user.age" placeholder="Age">
         </mat-form-field>
-        <button (click)='updateUser(fname.value,lname.value,gender.value,age.value)' class='btn btn-outline-dark'>Submit</button>
+        <button (click)='updateUser()' class='btn btn-outline-dark'>Submit</button>
       
   </div>

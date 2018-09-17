@@ -8,7 +8,7 @@ export class User {
     height?: number;
     weight?: number;
     age?: number;
-    sex?: number;
+    sex?: any;
     protein?: number;
     carbohydrates?: number;
     fat?: number;
