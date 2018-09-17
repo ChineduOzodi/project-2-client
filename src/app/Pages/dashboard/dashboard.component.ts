@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogEditUserInfoComponent } from './../../DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition, group } from '@angular/animations';
@@ -55,11 +57,18 @@ import { UserService } from '../../Services/user.service';
 
 export class DashboardComponent implements OnInit {
 
+  // panelOpenState is for the dropdown
+  panelOpenState = false;
+
   userName: String = 'User Name Here';
 
   state: String = 'state1';
 
   stateOne: String = 'state2';
+
+  // For Calandar to display current data
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
 
   constructor(
     public dialog: MatDialog,

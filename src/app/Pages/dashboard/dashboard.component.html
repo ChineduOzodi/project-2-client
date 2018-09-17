@@ -9,7 +9,7 @@
 
             <!-- User's Profile Card -->
             <mat-card class="example-card">
-                
+
                 <mat-card-header>
                     <!-- Edit info/macro button -->
                     <button class="edit" mat-button (click)='openEditInfo()'>
@@ -17,10 +17,11 @@
                     </button>
                     <div mat-card-avatar class="example-header-image"></div>
 
-                    
+
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' + this.userService.user.value.lastname}}</mat-card-title>
+                    <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' +
+                        this.userService.user.value.lastname}}</mat-card-title>
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
@@ -53,12 +54,83 @@
                     <button mat-button>SHARE</button>
                 </mat-card-actions>
             </mat-card>
-            
+
+            <!-- Calander -->
+            <div class="calander">
+                <mat-form-field color="warm">
+                    <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+
+                        <!-- If you want to add a custom icon -->
+                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <!-- BreakFast, Lunch and Dinner -->
+            <div class="dropdowns">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Breakfast
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} Text on opening and closing-->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios/50/000000/cinnamon-roll.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!-- TODO: {{this.userService.user.value.ProteinVal}}  this will be the user's breakfast items -->
+                        Jeoyyyyyyyy
+
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Lunch
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios-glyphs/50/000000/wrap.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!-- TODO: this.userService.user.value.firstname this will be the user's lunch items -->
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Dinner
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                                <a href="https://icons8.com"></a>
+                                <img src="https://png.icons8.com/ios/50/000000/food-and-wine-filled.png">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <!-- TODO: {{this.userService.user.value.ProteinVal}} this will be the user's dinner items-->
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
 
         </a>
 
         <!-- Closed Book Image -->
-        <a [@disappearClosedBook]="stateOne" class="logos"></a>
+        <!-- <a [@disappearClosedBook]="stateOne" class="logos"></a> -->
 
 
     </div>
