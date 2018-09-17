@@ -61,6 +61,7 @@ export class DashboardComponent implements OnInit {
   panelOpenState = false;
 
   myUser;
+  user;
 
   userName: String = 'User Name Here';
 
@@ -79,6 +80,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userService.verifyUser();
+    this.user = this.userService.getUserByUsername(this.userService.user.value.username);
     this.myUser = this.userService.user.value;
     this.state = 'state1';
     this.stateOne = 'state2';
