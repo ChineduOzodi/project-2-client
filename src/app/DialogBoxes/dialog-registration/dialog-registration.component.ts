@@ -1,3 +1,5 @@
+import { loadQueryList } from '@angular/core/src/render3/instructions';
+import { CategoryService } from './../../Services/category.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
@@ -5,6 +7,7 @@ import { CognitoService } from '../../Services/cognito.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { User } from '../../Models/user';
+import { NutrientsService } from '../../Services/nutrients.service';
 
 @Component({
   selector: 'app-dialog-registration',
@@ -23,13 +26,13 @@ export class DialogRegistrationComponent implements OnInit {
 
     email: new FormControl('', Validators.compose([
       Validators.required
-     , Validators.email
+      , Validators.email
     ])),
 
     password: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
-      ])),
+    ])),
 
     confirmPassword: new FormControl('', Validators.required),
 
@@ -75,6 +78,8 @@ export class DialogRegistrationComponent implements OnInit {
     private cognitoService: CognitoService,
     private router: Router,
     private userService: UserService,
+    private categoryService: CategoryService,
+    private nutrientsService: NutrientsService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   passValid(conf: string) {
@@ -124,6 +129,7 @@ export class DialogRegistrationComponent implements OnInit {
       const password = this.registrationForm.get('password').value;
       const firstName = this.registrationForm.get('firstName').value;
       const lastName = this.registrationForm.get('lastName').value;
+
       this.cognitoService.registerUser(email, username, password, firstName, lastName)
         .subscribe(result => {
           if (result) {
@@ -132,21 +138,45 @@ export class DialogRegistrationComponent implements OnInit {
               // if so, its gonna be an error
               this.errorMessage = result['message'];
             } else { // no error, so, create user.
+
               const user: User = {
                 username: username,
                 firstname: firstName,
                 lastname: lastName,
                 email: email,
                 password: password
-
               };
-
               this.userService.register(user).subscribe(
                 u => {
                   if (u) {
-                    sessionStorage.setItem('info',
-                      `Account confirmation email sent to ${user.email}, please confirm your account.`);
-                    this.dialogRef.close('Registered.');
+                    console.log('User created, creating user categories');
+                    this.categoryService.createUserCategory('Breakfast', u.uId).subscribe(() => {
+                      console.log('breakfast created');
+                      this.categoryService.createUserCategory('Lunch', u.uId).subscribe(() => {
+                        console.log('lunch created');
+                        this.categoryService.createUserCategory('Dinner', u.uId).subscribe(() => {
+                          console.log('dinner created');
+                          console.log('getting nutrient data');
+                          u.age = 24;
+                          u.sex = 1;
+                          this.nutrientsService.getDefaultNutrients(u.sex, u.age).subscribe((nutri: any) => {
+                            console.log('Got nutrient data');
+                            console.log(nutri);
+                            u.carbohydrates = nutri.carbGrams;
+                            u.fiber = nutri.fiberGrams;
+                            u.protein = nutri.proteinGrams;
+                            u.fat = nutri.fatMaxPercent;
+                            console.log('updating new user data');
+                            this.userService.updateInfo(u).subscribe( () => {
+                              console.log('user updated!');
+                              sessionStorage.setItem('info',
+                              `Account confirmation email sent to ${user.email}, please confirm your account.`);
+                            this.dialogRef.close('Registered.');
+                            });
+                          });
+                        });
+                      });
+                    });
                   }
                 }
               );

@@ -1,17 +1,23 @@
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-
-  <mat-card-header>Want to change your macros, go ahead! It's okay to change them!</mat-card-header>
-  <mat-form-field class="example-full-width">
-    <input matInput type="number" placeholder="Protein">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="number" placeholder="Carbs">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="number" placeholder="Fats">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="number" placeholder="Fibre">
-  </mat-form-field>
+  <div >
+      
+        <mat-card-header>Update User Information</mat-card-header>
+        
+        <mat-form-field class="example-full-width">
+          <input #fname matInput type="text" [(ngModel)]="user.firstname"  placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input #lname matInput type="text" [(ngModel)]="user.lastname" placeholder="Last Name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select #gender [(ngModel)]="user.sex" placeholder="Gender">
+                <mat-option value=1>Male</mat-option>
+                <mat-option value=2>Female</mat-option>
+                <mat-option value=1>I'd Rather Not Say</mat-option>
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input #age matInput type="number" [(ngModel)]="user.age" placeholder="Age">
+        </mat-form-field>
+        <button (click)='updateUser()' class='btn btn-outline-dark'>Submit</button>
+      
+  </div>
