@@ -21,6 +21,7 @@ import { DialogEditUserInfoComponent } from './DialogBoxes/dialog-edit-user-info
 import { MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FoodInfoTableComponent } from './food-info-table/food-info-table.component';
+import { DialogAddToCatergoryComponent } from './DialogBoxes/dialog-add-to-catergory/dialog-add-to-catergory.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FoodInfoTableComponent } from './food-info-table/food-info-table.compon
     RecipeComponent,
     DialogEditUserInfoComponent,
     DialogLoginComponent,
-    FoodInfoTableComponent
+    FoodInfoTableComponent,
+    DialogAddToCatergoryComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { FoodInfoTableComponent } from './food-info-table/food-info-table.compon
     DialogRegistrationComponent,
     DialogLoginComponent,
     DialogSearchNutriComponent,
-    DialogEditUserInfoComponent
+    DialogEditUserInfoComponent,
+    DialogAddToCatergoryComponent
   ],
   providers: [CognitoService, UserService],
   bootstrap: [AppComponent]

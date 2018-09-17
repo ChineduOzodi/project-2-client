@@ -14,16 +14,17 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
 
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
         MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
         MatExpansionModule, MatCardModule, MatProgressBarModule, MatTreeModule, MatDatepickerModule,
-        MatNativeDateModule],
+        MatNativeDateModule, MatGridListModule],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatFormFieldModule,
         MatSelectModule, MatInputModule, MatSnackBarModule, MatDialogModule, MatIconModule,
         MatExpansionModule, MatCardModule, MatProgressBarModule, MatTreeModule, MatDatepickerModule,
-        MatNativeDateModule],
+        MatNativeDateModule, MatGridListModule],
 })
 export class MaterialModule { }

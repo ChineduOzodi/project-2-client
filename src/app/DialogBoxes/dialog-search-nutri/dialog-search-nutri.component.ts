@@ -47,19 +47,17 @@ export class DialogSearchNutriComponent implements OnInit {
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
-  searchColumns = ['ndbno', 'name', 'manu', 'buttons'];
-  specificColumns = ['nutrient', 'amount', 'percentage', 'buttons'];
+
+  searchColumns = ['ndbno', 'name', 'manu', 'controls'];
+  specificColumns = ['nutrient', 'amount', 'percentage', 'controls'];
+
   foodProfile: ItemDescription;
 
   // User's item
   ItemList: ItemList[];
 
-  displayedColumns = ['name', 'manu'];
-
-
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
-
   totalNutrients =
     [539, 269, 208, 203, 204,
       205, 297, 295, 291, 301,
@@ -69,7 +67,6 @@ export class DialogSearchNutriComponent implements OnInit {
       418, 578, 318, 320, 323,
       573, 324, 430, 606, 645,
       646, 605, 601]; // Future Implementation of nutrition.
-
   constructor(private ds: DataService) { }
 
   ngOnInit() {
@@ -106,15 +103,21 @@ export class DialogSearchNutriComponent implements OnInit {
     // setting the JSON data to obj 'selected'
     this.ds.specificData(data).subscribe((selected: any) => {
 
-      this.AllNutrient = selected.foods[0].food.nutrients; // array of details for individual items
+      this.AllNutrient = selected.foods[0].food; // array of details for individual items
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
-      this.foodProfile = selected.foods[0];
+      console.log(selected.foods[0].food);
 
 
     }
     );
+  }
+
+  // Save resulting item from the 'moreData()' func.
+  saveItem(ndbno) {
+
+console.log(ndbno.desc.ndbno);
   }
 
 
@@ -132,5 +135,4 @@ const y = x.nutrient_id;
     }
 
   }
-
 }
