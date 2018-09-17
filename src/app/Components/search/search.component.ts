@@ -54,6 +54,7 @@ export class SearchComponent implements OnInit {
   // When the app loads, the state becomes small
   state: String = 'small';
 
+
   stateOne: String = 'fadeIn';
 
   // <------------------------------------------Search Function
@@ -183,6 +184,7 @@ export class SearchComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
 }
 
 
