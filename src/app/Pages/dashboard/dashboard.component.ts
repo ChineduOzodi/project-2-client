@@ -1,3 +1,4 @@
+import { FoodService } from './../../Services/food.service';
 import { FormControl } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogEditUserInfoComponent } from './../../DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
@@ -75,11 +76,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public userService: UserService
+    public userService: UserService,
+    public foodService: FoodService
     ) { }
 
   ngOnInit() {
     this.userService.verifyUser();
+    this.foodService.getFoodsFromDb();
     this.user = this.userService.getUserByUsername(this.userService.user.value.username);
     this.myUser = this.userService.user.value;
     this.state = 'state1';
