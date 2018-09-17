@@ -4,7 +4,34 @@
     
     }
     
-    #right{
+#right{
         border: darkgreen;
     margin-left: 5%;
         }
+
+.mat-select-value {
+            display: table-cell;
+            max-width: 0;
+            width: 94%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+}
+
+td.mat-cell {
+    padding: 11px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.border-success {
+    border-color: #e9ecef!important;
+}
+
+.mat-figure{
+    height: 120%;
+}
+.mat-grid-tile{
+    height: 80%;
+
+}

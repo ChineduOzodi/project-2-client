@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./dialog-add-to-catergory.component.css']
 })
 export class DialogAddToCatergoryComponent implements OnInit {
-
+  selected = 'option2';
 
   constructor(public snackBar: MatSnackBar) { }
 

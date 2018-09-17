@@ -12,10 +12,10 @@
     </div> -->
   <mat-grid-list cols="2" rowHeight='1:1'>
     <mat-grid-tile-header class="d-flex justify-content-center">
-      <select #select>
-        <option value=''>Please Select an Option</option>
-        <option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</option>
-      </select>
+      <mat-select placeholder="Please Select an Option" #select>
+        <mat-option value=''>All</mat-option>
+        <mat-option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</mat-option>
+      </mat-select>
       <!--1.02a select options end -->
 
       <!-- 1.02-input search input box for user -->
