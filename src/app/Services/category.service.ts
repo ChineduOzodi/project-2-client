@@ -26,7 +26,7 @@ export class CategoryService {
     ) { }
 
   getUserCategories() {
-    this.http.get(environment.dbUrl + `user-category/${this.userService.user.value.u_id}/`).subscribe((cats: Category[]) => {
+    this.http.get(environment.dbUrl + `user-category/${this.userService.user.value.uId}/`).subscribe((cats: Category[]) => {
       this.userCategories = cats;
     });
   }
@@ -35,6 +35,8 @@ export class CategoryService {
     const cat = new Category();
     cat.mealCatName = catName;
     cat.uId = uId;
+    console.log('creating cat for: ' + uId);
+    console.log(cat.mealCatName);
     return this.http.post(environment.dbUrl + 'user-category/' + cat.uId, cat, HTTP_OPTIONS);
   }
 }

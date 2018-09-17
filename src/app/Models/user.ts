@@ -1,5 +1,5 @@
 export class User {
-    u_id?: number;
+    uId?: number;
     username: string;
     password: string;
     email: string;
@@ -9,8 +9,8 @@ export class User {
     weight?: number;
     age?: number;
     sex?: number;
-    setProtien?: number;
-    setCarbs?: number;
-    setFats?: number;
-    setFiber?: number;
+    protein?: number;
+    carbohydrates?: number;
+    fat?: number;
+    fiber?: number;
 }

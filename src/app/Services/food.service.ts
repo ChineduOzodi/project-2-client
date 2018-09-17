@@ -28,7 +28,7 @@ export class FoodService {
    * Gets food from database for the logged in user. Will error out if no logged in user in the user service
    */
   getFoodsFromDb() {
-    return this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.u_id).subscribe( (foods: FoodDb[]) => {
+    return this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.uId).subscribe( (foods: FoodDb[]) => {
       this.userFoods = foods;
       if (foods && foods.length > 0) {
         this.updateFoodsWithApiData(0);
