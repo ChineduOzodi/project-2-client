@@ -24,11 +24,15 @@ export class FoodService {
     private userService: UserService,
     private dataService: DataService
     ) { }
+
+    foodToSave: FoodDb;
    /**
    * Gets food from database for the logged in user. Will error out if no logged in user in the user service
    */
   getFoodsFromDb() {
-    return this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.uId).subscribe( (foods: FoodDb[]) => {
+    console.log('Getting foods from db');
+    return this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.uId + '/').subscribe( (foods: FoodDb[]) => {
+      console.log('Foods request complete');
       this.userFoods = foods;
       if (foods && foods.length > 0) {
         this.updateFoodsWithApiData(0);
@@ -43,6 +47,7 @@ export class FoodService {
   private updateFoodsWithApiData(index: number) {
     this.dataService.specificData(this.userFoods[index].ndbno).subscribe((item) => {
       // update food
+      console.log('updating food item index: ' + index);
       this.userFoods[index].foodName = item.foods[0].food.desc.name;
       for (let i = 0; i < item.foods[0].food.nutrients.length; i++) {
         if ( environment.acceptableNutrients.includes(item.foods[0].food.nutrients[i].nutritient_id)) {
@@ -65,7 +70,7 @@ export class FoodService {
    * @param timestamp date/time food eaten
    * @param uId id of user
    */
-  saveFood(ndbno: string, mealCatId: number, measureIndex: number, servingAmount: number, timestamp: Date, uId: number ) {
+  saveFood(ndbno: string, mealCatId: number, measureIndex: number, servingAmount: number, timestamp: number, uId: number ) {
     const food: FoodDb = new FoodDb();
     food.ndbno = ndbno;
     food.mealCatId = mealCatId;

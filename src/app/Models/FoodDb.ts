@@ -11,7 +11,7 @@ export class FoodDb {
     measureName?: string;
     ndbno: string;
     servingAmount: number;
-    timestamp: Date;
+    timestamp: number;
     uId: number;
     nutrients: Nutrient[];
 }
