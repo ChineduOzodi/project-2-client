@@ -62,3 +62,7 @@
 .cdk-overlay-pane{
     width: 48%;
 }
+
+.selector {
+    margin-left: 5%;
+}

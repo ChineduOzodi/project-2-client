@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./dialog-add-to-catergory.component.css']
 })
 export class DialogAddToCatergoryComponent implements OnInit {
-  selected = 'option2';
+  selected = 1;
 
   constructor(public snackBar: MatSnackBar,
     private foodService: FoodService,
@@ -24,7 +24,8 @@ export class DialogAddToCatergoryComponent implements OnInit {
   }
 
   addCatOne() {
-    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 1, 0, 1, Date.now(), this.userService.user.value.uId).subscribe(() => {
+    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 1, 0, this.selected,
+       Date.now(), this.userService.user.value.uId).subscribe(() => {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
@@ -35,7 +36,8 @@ export class DialogAddToCatergoryComponent implements OnInit {
     console.log('Saving food to db');
   }
   addCatTwo() {
-    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 2, 0, 1, Date.now(), this.userService.user.value.uId).subscribe(() => {
+    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 2, 0, this.selected,
+       Date.now(), this.userService.user.value.uId).subscribe(() => {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
@@ -45,7 +47,8 @@ export class DialogAddToCatergoryComponent implements OnInit {
     console.log('2');
   }
   addCatThree() {
-    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 3, 0, 1, Date.now(), this.userService.user.value.uId).subscribe(() => {
+    this.foodService.saveFood(this.foodService.foodToSave.ndbno, 3, 0, this.selected,
+       Date.now(), this.userService.user.value.uId).subscribe(() => {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
