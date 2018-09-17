@@ -1,3 +1,5 @@
+import { loadQueryList } from '@angular/core/src/render3/instructions';
+import { CategoryService } from './../../Services/category.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
@@ -75,6 +77,7 @@ export class DialogRegistrationComponent implements OnInit {
     private cognitoService: CognitoService,
     private router: Router,
     private userService: UserService,
+    private categoryService: CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   passValid(conf: string) {
@@ -144,9 +147,20 @@ export class DialogRegistrationComponent implements OnInit {
               this.userService.register(user).subscribe(
                 u => {
                   if (u) {
-                    sessionStorage.setItem('info',
-                      `Account confirmation email sent to ${user.email}, please confirm your account.`);
-                    this.dialogRef.close('Registered.');
+                    console.log('User created, creating user categories');
+                    this.categoryService.createUserCategory('Breakfast', u.u_id).subscribe(() => {
+                      console.log('breakfast created');
+                      this.categoryService.createUserCategory('Lunch', u.u_id).subscribe(() => {
+                        console.log('lunch created');
+                        this.categoryService.createUserCategory('Dinner', u.u_id).subscribe(() => {
+                          console.log('dinner created');
+                          console.log('getting nutrient data');
+                          sessionStorage.setItem('info',
+                          `Account confirmation email sent to ${user.email}, please confirm your account.`);
+                        this.dialogRef.close('Registered.');
+                        });
+                      });
+                    });
                   }
                 }
               );
