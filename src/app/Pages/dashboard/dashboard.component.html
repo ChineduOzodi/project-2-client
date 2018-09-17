@@ -28,30 +28,34 @@
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalProtein.toFixed(1)}}/ {{myUser.protein}}g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalProtein}}/ {{myUser.protein}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentProtein}}"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalProtein / myUser.protein))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Carbohydrates </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalCarbs.toFixed(1)}}/ {{myUser.carbohydrates}}g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalCarbs}}/ {{myUser.carbohydrates}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentCarbs}}"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalCarbs / myUser.carbohydrates))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fats </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalFats.toFixed(1)}}/ {{myUser.fat}}g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFats}}/ {{myUser.fat}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentFats}}"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFats / myUser.fat))"></mat-progress-bar>
                     </mat-card-subtitle>
-                    <mat-card-title class="title">Fiber </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalFiber.toFixed(1)}}/ {{myUser.fiber}}g
+                    <mat-card-title class="title">Fibre </mat-card-title>
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFiber}}/ {{myUser.fiber}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentFiber}}"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFiber / myUser.fiber))"></mat-progress-bar>
                     </mat-card-subtitle>
                 </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
             </mat-card>
 
             <!-- Calander -->
