@@ -1,7 +1,7 @@
 import { UserService } from './../../Services/user.service';
 import { FoodService } from './../../Services/food.service';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-dialog-add-to-catergory',
@@ -13,7 +13,9 @@ export class DialogAddToCatergoryComponent implements OnInit {
 
   constructor(public snackBar: MatSnackBar,
     private foodService: FoodService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<DialogAddToCatergoryComponent>,
   ) { }
 
   ngOnInit() {
@@ -23,12 +25,18 @@ export class DialogAddToCatergoryComponent implements OnInit {
     console.log('value');
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
+
   addCatOne() {
     this.foodService.saveFood(this.foodService.foodToSave.ndbno, 1, 0, this.selected,
        Date.now(), this.userService.user.value.uId).subscribe(() => {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
+    this.closeDialog();
     this.snackBar.open('You have added a breakfast item to your list!', '', {
       duration: 2000,
     });
@@ -41,6 +49,7 @@ export class DialogAddToCatergoryComponent implements OnInit {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
+    this.closeDialog();
     this.snackBar.open('You have added a lunch item to your list!', '', {
       duration: 2000,
     });
@@ -52,6 +61,7 @@ export class DialogAddToCatergoryComponent implements OnInit {
       console.log('Saved to db');
       this.foodService.getFoodsFromDb();
     });
+    this.closeDialog();
     this.snackBar.open('You have added a dinner item to your list!', '', {
       duration: 2000,
     });
