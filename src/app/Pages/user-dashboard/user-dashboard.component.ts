@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -12,9 +13,10 @@ export class UserDashboardComponent implements OnInit {
   weight;
   height;
   User;
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.verifyUser();
   }
 
 

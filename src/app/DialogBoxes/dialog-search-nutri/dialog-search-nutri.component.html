@@ -1,12 +1,9 @@
 <h2 mat-dialog-title> Black Apple's Food Library </h2>
 
 
-  <select #select>
-    <option value=''>Please Select an Option</option>
-    <option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</option>
-
-  </select>
-  <!--1.02a select options end -->
+<select #select>
+  <option value=''>Please Select an Option</option>
+  <option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</option>
 
   <!-- 1.02-input search input box for user -->
   <mat-form-field>
@@ -14,11 +11,11 @@
   </mat-form-field>
   <!-- end of box. -->
 
-  <!--1.02b calls search function search(search bar info , foodgroup selected) -->
-  <button mat-button (click)='search(searchText.value,select.value)'>
-    <mat-icon md-48>search</mat-icon>
-  </button>
-  <!--1.02b end  -->
+<!--1.02b calls search function search(search bar info , foodgroup selected) -->
+<button mat-button (click)='search(searchText.value,select.value)'>
+  <mat-icon md-48>search</mat-icon>
+</button>
+<!--1.02b end  -->
 
 
 <mat-dialog-content>
@@ -29,13 +26,10 @@
   <!-- 1.01 Title and Search GUI START -->
   <!-- 1.02a select options to filter results. -->
   <!-- <div class="border border-secondary d-flex justify-content-center">
-
     </div> -->
 
   <div class="mat-elevation-z8">
-    <table mat-table #table [dataSource]="ItemList" 
-   
-    >
+    <table mat-table #table [dataSource]="ItemList">
       <!-- Id Column -->
       <ng-container matColumnDef="ndbno">
         <th mat-header-cell *matHeaderCellDef>Item No.</th>
@@ -68,61 +62,61 @@
     <!-- <mat-paginator #paginator [length]="dataSource.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
     </mat-paginator> -->
   </div>
-  
 
 
-    <!-- 1.05 RESULTS TABLE -->
 
-    <mat-dialog-content>
-      <div class="border border-warning">
+  <!-- 1.05 RESULTS TABLE -->
+
+  <mat-dialog-content>
+    <div class="border border-warning">
 
 
-        <table class="table" id='right' *ngIf='this.AllNutrient'>
-          <thead>
-            <tr>
-              <th scope="col">| Nutrient | Amount |</th>
-              <th scope="col">#</th>
-              <th scope="col">ID</th>
-              <th>
-                <mat-form-field>
-                  <mat-select placeholder="Measurement" [(ngModel)]="selectedMeasure">
-                    <mat-option *ngFor="let m of Measures; let i = index;" value='{{Measures[i].label}}'>{{Measures[i].label}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </th>
+      <table class="table" id='right' *ngIf='this.AllNutrient'>
+        <thead>
+          <tr>
+            <th scope="col">| Nutrient | Amount |</th>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th>
+              <mat-form-field>
+                <mat-select placeholder="Measurement" [(ngModel)]="selectedMeasure">
+                  <mat-option *ngFor="let m of Measures; let i = index;" value='{{Measures[i].label}}'>{{Measures[i].label}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <span *ngFor="let nut of AllNutrient; let i = index;">
+            <tr *ngIf="checkFilter(nut)">
+              <td>{{nut.name}}</td>
+              <span *ngFor='let m of nut.measures'>
+                <td *ngIf='m.label==selectedMeasure'>{{m.value}}[{{m.eunit}}]</td>
+              </span>
+              <td>{{nut.nutrient_id}}</td>
             </tr>
-          </thead>
-
-          <tbody>
-
-            <span *ngFor="let nut of AllNutrient; let i = index;">
-              <tr *ngIf="checkFilter(nut)">
-                <td>{{nut.name}}</td>
-                <span *ngFor='let m of nut.measures'>
-                  <td *ngIf='m.label==selectedMeasure'>{{m.value}}[{{m.eunit}}]</td>
-                </span>
-                <td>{{nut.nutrient_id}}</td>
-              </tr>
-            </span>
+          </span>
 
 
 
 
 
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
+    </div>
 
 
 
 
-    </mat-dialog-content>
+  </mat-dialog-content>
 
 
 
 
-    <!--1.05 END OF RESULTS TABLE -->
-    <!-- </div> -->
+  <!--1.05 END OF RESULTS TABLE -->
+  <!-- </div> -->
 
 </mat-dialog-content>
 <mat-dialog-actions>

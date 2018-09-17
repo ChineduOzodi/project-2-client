@@ -8,17 +8,12 @@
       </div>
       <div class="tabs">
         <a routerLink="/recipe">
-          <button [@navBarRight]="stateNav" (click)="moveMeRight()" mat-raised-button color="primary">Recipe</button>
-        </a>
-      </div>
-      <div class="tabs">
-        <a>
-          <button [@navBarRight]="stateNav" (click)="moveMeRight()" routerLink="/cart" mat-raised-button color="primary">Cart</button>
+          <button [@navBarRight]="stateNav" (click)="moveMeRight()" mat-raised-button color="primary">Search</button>
         </a>
       </div>
       <div class="tabs">
         <a routerLink="/box">
-          <button [@navBarRight]="stateNav" (click)="moveMeRight()" mat-raised-button color="primary" routerLink="recipe">box</button>
+          <button [@navBarRight]="stateNav" (click)="logout()" mat-raised-button color="primary" routerLink="recipe">Logout</button>
         </a>
       </div>
       <div class="buttonImage"></div>
