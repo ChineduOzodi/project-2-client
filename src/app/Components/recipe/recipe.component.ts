@@ -1,3 +1,4 @@
+import { DialogAddToCatergoryComponent } from './../../DialogBoxes/dialog-add-to-catergory/dialog-add-to-catergory.component';
 import { UserService } from './../../Services/user.service';
 import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit } from '@angular/core';
@@ -52,7 +53,7 @@ export class RecipeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.userService.verifyUser();
+    // this.userService.verifyUser();
   }
 
   openSearchNutri() {
@@ -65,6 +66,18 @@ export class RecipeComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  // Add Category
+  // openAddCategory() {
+  //   const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
+  //     {
+  //       width: '80%'
+  //     });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
 
   zoomInMe() {
 
