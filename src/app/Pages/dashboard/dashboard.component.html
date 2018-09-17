@@ -25,32 +25,35 @@
                     <mat-card-title>
 
                     </mat-card-title>
-
-                    <!-- User's Daily Quota -->
-                    <mat-card-title class="title">Protein </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalProtein.toFixed(1)}}/ {{myUser.protein}}g
-                        <!-- This will be the users input daily quota they are trying to meet
+                    <span *ngIf="userService.percentProtein || userService.percentCarbs || userService.percentCarbs || userService.percentFiber">
+                        <!-- User's Daily Quota -->
+                        <mat-card-title class="title">Protein </mat-card-title>
+                        <mat-card-subtitle class="subtitle">{{userService.totalProtein.toFixed(1)}}/
+                            {{myUser.protein}}g
+                            <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentProtein}}"></mat-progress-bar>
-                    </mat-card-subtitle>
-                    <mat-card-title class="title">Carbohydrates </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalCarbs.toFixed(1)}}/ {{myUser.carbohydrates}}g
-                        <!-- This will be the users input daily quota they are trying to meet
+                            <mat-progress-bar mode="determinate" value="{{userService.percentProtein}}"></mat-progress-bar>
+                        </mat-card-subtitle>
+                        <mat-card-title class="title">Carbohydrates </mat-card-title>
+                        <mat-card-subtitle class="subtitle">{{userService.totalCarbs.toFixed(1)}}/
+                            {{myUser.carbohydrates}}g
+                            <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentCarbs}}"></mat-progress-bar>
-                    </mat-card-subtitle>
-                    <mat-card-title class="title">Fats </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalFats.toFixed(1)}}/ {{myUser.fat}}g
-                        <!-- This will be the users input daily quota they are trying to meet
+                            <mat-progress-bar mode="determinate" value="{{userService.percentCarbs}}"></mat-progress-bar>
+                        </mat-card-subtitle>
+                        <mat-card-title class="title">Fats </mat-card-title>
+                        <mat-card-subtitle class="subtitle">{{userService.totalFats.toFixed(1)}}/ {{myUser.fat}}g
+                            <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentFats}}"></mat-progress-bar>
-                    </mat-card-subtitle>
-                    <mat-card-title class="title">Fiber </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{this.userService.totalFiber.toFixed(1)}}/ {{myUser.fiber}}g
-                        <!-- This will be the users input daily quota they are trying to meet
+                            <mat-progress-bar mode="determinate" value="{{userService.percentFats}}"></mat-progress-bar>
+                        </mat-card-subtitle>
+                        <mat-card-title class="title">Fiber </mat-card-title>
+                        <mat-card-subtitle class="subtitle">{{userService.totalFiber.toFixed(1)}}/ {{myUser.fiber}}g
+                            <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="{{userService.percentFiber}}"></mat-progress-bar>
-                    </mat-card-subtitle>
+                            <mat-progress-bar mode="determinate" value="{{userService.percentFiber}}"></mat-progress-bar>
+                        </mat-card-subtitle>
+                    </span>
                 </mat-card-content>
             </mat-card>
 
