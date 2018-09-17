@@ -27,6 +27,11 @@ export class UserService {
   totalFats: number;
   totalFiber: number;
 
+  percentProtein: number;
+  percentCarbs: number;
+  percentFats: number;
+  percentFiber: number;
+
   constructor(
     private router: Router,
     private http: HttpClient) { }
