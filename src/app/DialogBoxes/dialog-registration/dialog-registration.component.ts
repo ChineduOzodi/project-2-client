@@ -7,6 +7,7 @@ import { CognitoService } from '../../Services/cognito.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { User } from '../../Models/user';
+import { NutrientsService } from '../../Services/nutrients.service';
 
 @Component({
   selector: 'app-dialog-registration',
@@ -25,13 +26,13 @@ export class DialogRegistrationComponent implements OnInit {
 
     email: new FormControl('', Validators.compose([
       Validators.required
-     , Validators.email
+      , Validators.email
     ])),
 
     password: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
-      ])),
+    ])),
 
     confirmPassword: new FormControl('', Validators.required),
 
@@ -78,6 +79,7 @@ export class DialogRegistrationComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private categoryService: CategoryService,
+    private nutrientsService: NutrientsService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   passValid(conf: string) {
@@ -155,9 +157,11 @@ export class DialogRegistrationComponent implements OnInit {
                         this.categoryService.createUserCategory('Dinner', u.u_id).subscribe(() => {
                           console.log('dinner created');
                           console.log('getting nutrient data');
-                          sessionStorage.setItem('info',
-                          `Account confirmation email sent to ${user.email}, please confirm your account.`);
-                        this.dialogRef.close('Registered.');
+                          this.nutrientsService.getDefaultNutrients(u.sex, u.age).subscribe((nutri) => {
+                            sessionStorage.setItem('info',
+                              `Account confirmation email sent to ${user.email}, please confirm your account.`);
+                            this.dialogRef.close('Registered.');
+                          });
                         });
                       });
                     });
@@ -167,7 +171,7 @@ export class DialogRegistrationComponent implements OnInit {
             }
           }
         }
-      );
+        );
     }
   }
 }
