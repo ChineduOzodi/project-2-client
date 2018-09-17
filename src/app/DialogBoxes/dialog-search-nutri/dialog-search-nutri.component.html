@@ -12,8 +12,8 @@
     </div> -->
   <mat-grid-list cols="2" rowHeight='1:1'>
     <mat-grid-tile-header class="d-flex justify-content-center">
-      <mat-select placeholder="Please Select an Option" value='' #select>
-        <mat-option >All</mat-option>
+      <mat-select placeholder="Please Select an Option" #select>
+        <mat-option value=''>All</mat-option>
         <mat-option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</mat-option>
       </mat-select>
       <!--1.02a select options end -->
