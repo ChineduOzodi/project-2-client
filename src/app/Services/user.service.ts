@@ -66,6 +66,7 @@ export class UserService {
    */
   updateInfo(user: User): Observable<User> {
     console.log('[LOG] - In UserService.updateInfo()');
+    console.log(user);
     return this.http.put<User>(apiUrl + `users/${user.uId}/`, JSON.stringify(user), HTTP_OPTIONS);
   }
 
