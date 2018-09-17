@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogEditUserInfoComponent } from './../../DialogBoxes/dialog-edit-user-info/dialog-edit-user-info.component';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition, group } from '@angular/animations';
@@ -5,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl} from '@angular/cdk/tree';
+import { DataService } from '../../Services/data.service';
 import { UserService } from '../../Services/user.service';
 
 @Component({
@@ -55,14 +58,21 @@ import { UserService } from '../../Services/user.service';
 
 export class DashboardComponent implements OnInit {
 
+  // panelOpenState is for the dropdown
+  panelOpenState = false;
+
   userName: String = 'User Name Here';
 
   state: String = 'state1';
 
   stateOne: String = 'state2';
+  // For Calandar to display current data
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
 
   constructor(
     public dialog: MatDialog,
+    private dataService: DataService,
     public userService: UserService
     ) { }
 
@@ -70,6 +80,10 @@ export class DashboardComponent implements OnInit {
     this.userService.verifyUser();
     this.state = 'state1';
     this.stateOne = 'state2';
+    this.dataService.specificData('01009').subscribe( data => {
+      console.log('Data');
+      console.log(data);
+    });
   }
 
   openEditInfo(): void {

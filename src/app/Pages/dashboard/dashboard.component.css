@@ -131,3 +131,21 @@ margin-top: -50px;
     margin-top: -5%;
     position: absolute;
 }
+
+/* dropdown */
+.dropdowns {
+    margin-top: 4%;    
+    width: 40%;
+    margin-left: 57%;
+}
+
+img {
+    margin-left: 78%;
+    height: 99%;
+    width: 26%;
+}
+
+.calander {
+    margin-left: 65%;
+    margin-top: -60%;
+}
