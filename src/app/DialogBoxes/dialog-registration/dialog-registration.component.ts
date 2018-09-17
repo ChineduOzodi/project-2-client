@@ -129,6 +129,7 @@ export class DialogRegistrationComponent implements OnInit {
       const password = this.registrationForm.get('password').value;
       const firstName = this.registrationForm.get('firstName').value;
       const lastName = this.registrationForm.get('lastName').value;
+
       this.cognitoService.registerUser(email, username, password, firstName, lastName)
         .subscribe(result => {
           if (result) {
@@ -137,30 +138,41 @@ export class DialogRegistrationComponent implements OnInit {
               // if so, its gonna be an error
               this.errorMessage = result['message'];
             } else { // no error, so, create user.
+
               const user: User = {
                 username: username,
                 firstname: firstName,
                 lastname: lastName,
                 email: email,
                 password: password
-
               };
-
               this.userService.register(user).subscribe(
                 u => {
                   if (u) {
                     console.log('User created, creating user categories');
-                    this.categoryService.createUserCategory('Breakfast', u.u_id).subscribe(() => {
+                    this.categoryService.createUserCategory('Breakfast', u.uId).subscribe(() => {
                       console.log('breakfast created');
-                      this.categoryService.createUserCategory('Lunch', u.u_id).subscribe(() => {
+                      this.categoryService.createUserCategory('Lunch', u.uId).subscribe(() => {
                         console.log('lunch created');
-                        this.categoryService.createUserCategory('Dinner', u.u_id).subscribe(() => {
+                        this.categoryService.createUserCategory('Dinner', u.uId).subscribe(() => {
                           console.log('dinner created');
                           console.log('getting nutrient data');
-                          this.nutrientsService.getDefaultNutrients(u.sex, u.age).subscribe((nutri) => {
-                            sessionStorage.setItem('info',
+                          u.age = 24;
+                          u.sex = 1;
+                          this.nutrientsService.getDefaultNutrients(u.sex, u.age).subscribe((nutri: any) => {
+                            console.log('Got nutrient data');
+                            console.log(nutri);
+                            u.carbohydrates = nutri.carbGrams;
+                            u.fiber = nutri.fiberGrams;
+                            u.protein = nutri.proteinGrams;
+                            u.fat = nutri.fatMaxPercent;
+                            console.log('updating new user data');
+                            this.userService.updateInfo(u).subscribe( () => {
+                              console.log('user updated!');
+                              sessionStorage.setItem('info',
                               `Account confirmation email sent to ${user.email}, please confirm your account.`);
                             this.dialogRef.close('Registered.');
+                            });
                           });
                         });
                       });
@@ -171,7 +183,7 @@ export class DialogRegistrationComponent implements OnInit {
             }
           }
         }
-        );
+      );
     }
   }
 }
