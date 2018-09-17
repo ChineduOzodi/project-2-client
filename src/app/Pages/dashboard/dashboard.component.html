@@ -28,28 +28,28 @@
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{myUser.Protein}}/ 200g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalProtein}}/ {{myUser.protein}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Protein / 200) * 100)"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalProtein / myUser.protein))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Carbohydrates </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{myUser.Carbohydrates}}/ 310g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalCarbs}}/ {{myUser.carbohydrates}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Carbohydrates / 310) * 100)"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalCarbs / myUser.carbohydrates))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fats </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{myUser.Fats}}/ 65g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFats}}/ {{myUser.fat}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Fats / 65) * 100)"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFats / myUser.fat))"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fibre </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{myUser.Fibre}}/ 40g
+                    <mat-card-subtitle class="subtitle">{{this.userService.totalFiber}}/ {{myUser.fiber}}g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Fibre / 40) * 100)"></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((this.userService.totalFiber / myUser.fiber))"></mat-progress-bar>
                     </mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions>
@@ -89,8 +89,15 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <!-- TODO: {{this.userService.user.value.ProteinVal}}  this will be the user's breakfast items -->
-                        Jeoyyyyyyyy
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 1">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
 
 
                     </mat-expansion-panel>
@@ -108,7 +115,15 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <!-- TODO: this.userService.user.value.firstname this will be the user's lunch items -->
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 2">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
 
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -125,7 +140,15 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <!-- TODO: {{this.userService.user.value.ProteinVal}} this will be the user's dinner items-->
+                        <span *ngIf="this.foodService.userFoods">
+                            <ul>
+                                <span *ngFor="let foodDb of this.foodService.userFoods; let i=index">
+                                    <li *ngIf="foodDb.mealCatId == 3">
+                                        {{foodDb.foodName}} - Amount: {{foodDb.servingAmount}} {{foodDb.measureName}}
+                                    </li>
+                                </span>
+                            </ul>
+                        </span>
 
                     </mat-expansion-panel>
                 </mat-accordion>

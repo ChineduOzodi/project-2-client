@@ -1,3 +1,4 @@
+import { FoodService } from './food.service';
 import { environment } from './../../environments/environment';
 import { User } from './../Models/user';
 import { Injectable } from '@angular/core';
@@ -21,10 +22,14 @@ export class UserService {
 
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
+  totalProtein: number;
+  totalCarbs: number;
+  totalFats: number;
+  totalFiber: number;
+
   constructor(
     private router: Router,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) { }
 
   /**
   * This method will get user info from the database based on

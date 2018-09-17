@@ -1,3 +1,5 @@
+import { Item } from './../../Models/item';
+import { FoodService } from './../../Services/food.service';
 import { UserService } from './../../Services/user.service';
 import { DialogAddToCatergoryComponent } from './../dialog-add-to-catergory/dialog-add-to-catergory.component';
 import { DataSource } from '@angular/cdk/collections';
@@ -11,6 +13,7 @@ import { Nutrient } from '../../Models/nutrient';
 import { Measures } from '../../Models/measures';
 import { ItemList } from '../../Models/itemList';
 import { ItemDescription } from '../../Models/itemDescription';
+import { FoodDb } from '../../Models/FoodDb';
 
 
 @Component({
@@ -76,7 +79,9 @@ export class DialogSearchNutriComponent implements OnInit {
       646, 605, 601]; // Future Implementation of nutrition.
   constructor(private ds: DataService,
     public dialog: MatDialog,
-    private userService: UserService) { }
+    private userService: UserService,
+    private foodService: FoodService
+    ) { }
 
   ngOnInit() {
 
@@ -106,11 +111,17 @@ export class DialogSearchNutriComponent implements OnInit {
   }
 
   // 1.04 DETAILS BY ITEM NUMBER
-  moreData(data) {
-    console.log(data);
+  moreData(item: Item) {
+    console.log(item);
+    console.log(item.name);
+    // Set data to be saved to db
+    this.foodService.foodToSave = new FoodDb()  ;
+    this.foodService.foodToSave.ndbno = item.ndbno;
+    this.foodService.foodToSave.uId = this.userService.user.value.uId;
+    this.foodService.foodToSave.timestamp = Date.now();
 
     // setting the JSON data to obj 'selected'
-    this.ds.specificData(data).subscribe((selected: any) => {
+    this.ds.specificData(item.ndbno).subscribe((selected: any) => {
 
       this.AllNutrient = selected.foods[0].food; // array of details for individual items
       this.core = this.AllNutrient;
@@ -118,7 +129,16 @@ export class DialogSearchNutriComponent implements OnInit {
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
       console.log(selected.foods[0].food);
 
+      // Save nutrient information
+      this.foodService.foodToSave.measureIndex = 0;
+      this.foodService.foodToSave.servingAmount = 1;
+      this.foodService.foodToSave.mealCatId = 1;
 
+      // console.log('Saving food to db');
+      // this.foodService.saveFood(item.ndbno, 1, 0, 1, Date.now(), this.userService.user.value.uId).subscribe(() => {
+      //   console.log('Saved to db');
+      //   this.foodService.getFoodsFromDb();
+      // });
     }
     );
   }

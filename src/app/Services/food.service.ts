@@ -1,3 +1,4 @@
+import { Nutrient } from './../Models/nutrient';
 import { DataService } from './data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FoodDb } from './../Models/FoodDb';
@@ -24,12 +25,18 @@ export class FoodService {
     private userService: UserService,
     private dataService: DataService
     ) { }
+
+    foodToSave: FoodDb;
    /**
    * Gets food from database for the logged in user. Will error out if no logged in user in the user service
    */
   getFoodsFromDb() {
-    return this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.uId).subscribe( (foods: FoodDb[]) => {
+    console.log('Getting foods from db');
+    this.http.get(environment.dbUrl + 'plan/user/' + this.userService.user.value.uId + '/').subscribe( (foods: FoodDb[]) => {
+      console.log('Foods request complete: ' + foods.length);
+      console.log(foods);
       this.userFoods = foods;
+      console.log(this.userFoods.length);
       if (foods && foods.length > 0) {
         this.updateFoodsWithApiData(0);
       }
@@ -41,18 +48,45 @@ export class FoodService {
    * @param index Index to update
    */
   private updateFoodsWithApiData(index: number) {
+    console.log('starting to update food item index: ' + index);
+    console.log(this.userFoods.length);
     this.dataService.specificData(this.userFoods[index].ndbno).subscribe((item) => {
       // update food
+      console.log('done updating food item index: ' + index);
+      // console.log(item.foods[0].food.nutrients[0]);
       this.userFoods[index].foodName = item.foods[0].food.desc.name;
+      this.userFoods[index].nutrients = [];
       for (let i = 0; i < item.foods[0].food.nutrients.length; i++) {
-        if ( environment.acceptableNutrients.includes(item.foods[0].food.nutrients[i].nutritient_id)) {
+        if ( environment.acceptableNutrients.includes(item.foods[0].food.nutrients[i].nutrient_id)) {
           this.userFoods[index].nutrients.push(item.foods[0].food.nutrients[i]);
         }
       }
       this.userFoods[index].measureName = this.userFoods[index].nutrients[0].measures[this.userFoods[index].measureIndex].label;
-      if (index < this.userFoods.length) {
-        index++;
+      if (++index < this.userFoods.length) {
         this.updateFoodsWithApiData(index);
+      } else {
+        // update the total carbs and stuff
+        this.userService.totalCarbs = 0;
+        this.userService.totalFats = 0;
+        this.userService.totalFiber = 0;
+        this.userService.totalProtein = 0;
+
+        for ( let i = 0; i < this.userFoods.length; i++) {
+          for (let k = 0; k < this.userFoods[i].nutrients.length; k++) {
+            if (this.userFoods[i].nutrients[k].nutrient_id === 203) {
+              this.userService.totalProtein += this.userFoods[i].nutrients[k].value;
+            }
+            if (this.userFoods[i].nutrients[k].nutrient_id === 205) {
+              this.userService.totalCarbs += this.userFoods[i].nutrients[k].value;
+            }
+            if (this.userFoods[i].nutrients[k].nutrient_id === 291) {
+              this.userService.totalFiber += this.userFoods[i].nutrients[k].value;
+            }
+            if (this.userFoods[i].nutrients[k].nutrient_id === 204) {
+              this.userService.totalFats += this.userFoods[i].nutrients[k].value;
+            }
+          }
+        }
       }
     });
   }
@@ -65,7 +99,7 @@ export class FoodService {
    * @param timestamp date/time food eaten
    * @param uId id of user
    */
-  saveFood(ndbno: string, mealCatId: number, measureIndex: number, servingAmount: number, timestamp: Date, uId: number ) {
+  saveFood(ndbno: string, mealCatId: number, measureIndex: number, servingAmount: number, timestamp: number, uId: number ) {
     const food: FoodDb = new FoodDb();
     food.ndbno = ndbno;
     food.mealCatId = mealCatId;
