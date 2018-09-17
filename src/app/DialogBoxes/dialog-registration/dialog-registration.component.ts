@@ -150,11 +150,11 @@ export class DialogRegistrationComponent implements OnInit {
                 u => {
                   if (u) {
                     console.log('User created, creating user categories');
-                    this.categoryService.createUserCategory('Breakfast', u.u_id).subscribe(() => {
+                    this.categoryService.createUserCategory('Breakfast', u.uId).subscribe(() => {
                       console.log('breakfast created');
-                      this.categoryService.createUserCategory('Lunch', u.u_id).subscribe(() => {
+                      this.categoryService.createUserCategory('Lunch', u.uId).subscribe(() => {
                         console.log('lunch created');
-                        this.categoryService.createUserCategory('Dinner', u.u_id).subscribe(() => {
+                        this.categoryService.createUserCategory('Dinner', u.uId).subscribe(() => {
                           console.log('dinner created');
                           console.log('getting nutrient data');
                           this.nutrientsService.getDefaultNutrients(u.sex, u.age).subscribe((nutri) => {
