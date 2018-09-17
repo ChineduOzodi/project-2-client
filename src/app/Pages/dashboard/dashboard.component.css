@@ -146,6 +146,9 @@ img {
 }
 
 .calander {
-    margin-left: 65%;
-    margin-top: -60%;
+        margin-left: 60%;
+        margin-top: -60%;
+        width: 32%;
+        height: 12%;
+        background-color: #f8f9faab;
 }

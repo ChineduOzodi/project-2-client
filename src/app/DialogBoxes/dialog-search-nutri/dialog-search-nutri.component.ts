@@ -1,3 +1,5 @@
+import { UserService } from './../../Services/user.service';
+import { DialogAddToCatergoryComponent } from './../dialog-add-to-catergory/dialog-add-to-catergory.component';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -27,9 +29,9 @@ import { ItemDescription } from '../../Models/itemDescription';
 
         query(':enter', stagger('300ms', [
           animate('1s ease-in', keyframes([
-            style({opacity: 0, transform: 'translateY(-75px)', offset: 0}),
-            style({opacity: .5, transform: 'translateY(35px)', offset: .3}),
-            style({opacity: 1, transform: 'translateY(0px)', offset: 1}),
+            style({ opacity: 0, transform: 'translateY(-75px)', offset: 0 }),
+            style({ opacity: .5, transform: 'translateY(35px)', offset: .3 }),
+            style({ opacity: 1, transform: 'translateY(0px)', offset: 1 }),
           ]
           ))
         ]))
@@ -40,6 +42,11 @@ import { ItemDescription } from '../../Models/itemDescription';
   ]
 })
 export class DialogSearchNutriComponent implements OnInit {
+  /**
+      * The navbar initial Position is set with this: right-of-book-normal, right-of-book-zoomed
+      */
+  navbarPosition: String = 'right-of-book-zoomed';
+
 
   foodgroups: ''; // 1.02 Select Dropdown
   itemList: any;
@@ -67,7 +74,9 @@ export class DialogSearchNutriComponent implements OnInit {
       418, 578, 318, 320, 323,
       573, 324, 430, 606, 645,
       646, 605, 601]; // Future Implementation of nutrition.
-  constructor(private ds: DataService) { }
+  constructor(private ds: DataService,
+    public dialog: MatDialog,
+    private userService: UserService) { }
 
   ngOnInit() {
 
@@ -117,7 +126,7 @@ export class DialogSearchNutriComponent implements OnInit {
   // Save resulting item from the 'moreData()' func.
   saveItem(ndbno) {
 
-console.log(ndbno.desc.ndbno);
+    console.log(ndbno.desc.ndbno);
   }
 
 
@@ -125,7 +134,7 @@ console.log(ndbno.desc.ndbno);
   // 1.07 Allowable Nutrients Filter
   // if it doesn't contain a nutrient # matching it will not show.
   checkFilter(x): Boolean {
-const y = x.nutrient_id;
+    const y = x.nutrient_id;
     if (this.acceptableNutrients.includes(y)) {
 
       return true;
@@ -134,5 +143,17 @@ const y = x.nutrient_id;
       return false;
     }
 
+  }
+
+  // Add Category
+  openAddCategory() {
+    const dialogRef = this.dialog.open(DialogAddToCatergoryComponent,
+      {
+        width: '80%'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

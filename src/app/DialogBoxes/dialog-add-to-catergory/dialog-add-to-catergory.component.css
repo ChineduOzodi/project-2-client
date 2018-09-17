@@ -53,4 +53,12 @@
 
 }
 
-/* Dialog box */
+/* Calendar */
+.calendar {
+    margin-top: 18%;
+    margin-left: -10%;
+}
+
+.cdk-overlay-pane{
+    width: 48%;
+}

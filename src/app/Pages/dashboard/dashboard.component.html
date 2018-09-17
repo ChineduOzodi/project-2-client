@@ -22,34 +22,34 @@
                 <mat-card-content>
                     <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' +
                         this.userService.user.value.lastname}}{{user.firstname}}</mat-card-title>
-                        <mat-card-title>
-                            
-                        </mat-card-title>
+                    <mat-card-title>
+
+                    </mat-card-title>
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
                     <mat-card-subtitle class="subtitle">{{myUser.Protein}}/ 200g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Protein / 200) * 100)" ></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Protein / 200) * 100)"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Carbohydrates </mat-card-title>
                     <mat-card-subtitle class="subtitle">{{myUser.Carbohydrates}}/ 310g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Carbohydrates / 310) * 100)" ></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Carbohydrates / 310) * 100)"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fats </mat-card-title>
                     <mat-card-subtitle class="subtitle">{{myUser.Fats}}/ 65g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Fats / 65) * 100)" ></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Fats / 65) * 100)"></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fibre </mat-card-title>
                     <mat-card-subtitle class="subtitle">{{myUser.Fibre}}/ 40g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="((myUser.Fibre / 40) * 100)" ></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Fibre / 40) * 100)"></mat-progress-bar>
                     </mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions>
@@ -59,19 +59,21 @@
             </mat-card>
 
             <!-- Calander -->
-            <div class="calander">
-                <mat-form-field color="warm">
-                    <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date" disabled>
-                    <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-card class="calander">
+                <div>
+                    <mat-form-field color="warm">
+                        <input matInput [matDatepicker]="picker" placeholder="Today's date!" [formControl]="date"
+                            disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker">
 
-                        <!-- If you want to add a custom icon -->
-                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                            <!-- If you want to add a custom icon -->
+                            <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
 
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker disabled="false"></mat-datepicker>
-                </mat-form-field>
-            </div>
-
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </mat-card>
             <!-- BreakFast, Lunch and Dinner -->
             <div class="dropdowns">
                 <mat-accordion>

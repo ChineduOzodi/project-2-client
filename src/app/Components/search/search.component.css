@@ -27,3 +27,7 @@
 .searchBox[_ngcontent-c1] {
     margin-top: -74%;
 }
+
+.mat-card {
+    background-color: transparent;
+}
