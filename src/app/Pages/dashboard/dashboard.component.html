@@ -21,32 +21,35 @@
                 </mat-card-header>
                 <mat-card-content>
                     <mat-card-title *ngIf="this.userService.user.value">{{this.userService.user.value.firstname + ' ' +
-                        this.userService.user.value.lastname}}</mat-card-title>
+                        this.userService.user.value.lastname}}{{user.firstname}}</mat-card-title>
+                        <mat-card-title>
+                            
+                        </mat-card-title>
 
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{ProteinVal.value}}/ 200g
+                    <mat-card-subtitle class="subtitle">{{myUser.Protein}}/ 200g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="160" #ProteinVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Protein / 200) * 100)" ></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Carbohydrates </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{CarbVal.value}}/ 310g
+                    <mat-card-subtitle class="subtitle">{{myUser.Carbohydrates}}/ 310g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="95" #CarbVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Carbohydrates / 310) * 100)" ></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fats </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{FatsVal.value}}/ 65g
+                    <mat-card-subtitle class="subtitle">{{myUser.Fats}}/ 65g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="45" #FatsVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Fats / 65) * 100)" ></mat-progress-bar>
                     </mat-card-subtitle>
                     <mat-card-title class="title">Fibre </mat-card-title>
-                    <mat-card-subtitle class="subtitle">{{FiberVal.value}}/ 40g
+                    <mat-card-subtitle class="subtitle">{{myUser.Fibre}}/ 40g
                         <!-- This will be the users input daily quota they are trying to meet
                             for now its hard coded -->
-                        <mat-progress-bar mode="determinate" value="27" #FiberVal></mat-progress-bar>
+                        <mat-progress-bar mode="determinate" value="((myUser.Fibre / 40) * 100)" ></mat-progress-bar>
                     </mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions>
