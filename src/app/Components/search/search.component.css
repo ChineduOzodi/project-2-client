@@ -1,0 +1,29 @@
+/* Jumbotron */
+.jumbotron {
+    position: fixed;
+    margin-top: 1%;
+    margin-left: 7.5%;
+    height: 97%;
+    background-color: #ffffff00;
+}
+
+/* Image openbook */
+.logo {
+    margin-top: -10%;    
+    width: 792px;
+    height: 619px;
+    display: block;
+    background:url('../../../assets/Images/openbook.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+}
+
+/* Search Box */
+.searchBox {
+    margin-top: 1%;
+}
+
+.searchBox[_ngcontent-c1] {
+    margin-top: -74%;
+}

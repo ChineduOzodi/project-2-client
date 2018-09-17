@@ -1,0 +1,136 @@
+<app-button-navbar [navbarPosition]="navbarPosition"></app-button-navbar>
+
+<div class="container">
+    <div class=jumbotron>
+
+        <a [@zoomInclosedBook]="state" (click)='zoomInMe()' class="logo">
+        </a>
+
+        <mat-card class="searchBox">
+            <!-- Search Tables -->
+            <h2 mat-dialog-title> Black Apple's Food Library </h2>
+
+            <mat-dialog-content>
+
+                <!-- <div class="border border-info"> -->
+
+
+                <!-- 1.01 Title and Search GUI START -->
+                <!-- 1.02a select options to filter results. -->
+                <!-- <div class="border border-secondary d-flex justify-content-center">
+                    </div> -->
+                <mat-grid-list cols="2" rowHeight='1:1'>
+                    <mat-grid-tile-header class="d-flex justify-content-center">
+                        <select #select>
+                            <option value=''>Please Select an Option</option>
+                            <option *ngFor='let type of foodgroups;' value='{{type.id}}'>{{type.name}}</option>
+                        </select>
+                        <!--1.02a select options end -->
+
+                        <!-- 1.02-input search input box for user -->
+                        <mat-form-field>
+                            <input matInput placeholder="Search a food item!" #searchText>
+                        </mat-form-field>
+                        <!-- end of box. -->
+
+                        <!--1.02b calls search function search(search bar info , foodgroup selected) -->
+                        <button mat-button (click)='search(searchText.value,select.value)'>
+                            <mat-icon md-48>search</mat-icon>
+                        </button>
+
+                    </mat-grid-tile-header>
+                    <mat-grid-tile class="border border-success">
+                        <mat-dialog-content *ngIf='ItemList'>
+                            <div class="mat-elevation-z8">
+                                <table mat-table #table [dataSource]="ItemList">
+                                    <!-- Id Column -->
+                                    <ng-container matColumnDef="ndbno">
+                                        <th mat-header-cell *matHeaderCellDef>Item No.</th>
+                                        <td mat-cell *matCellDef="let item">{{item.ndbno}}</td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef>Food Name</th>
+                                        <td mat-cell *matCellDef="let item">{{item.name}}</td>
+                                    </ng-container>
+
+                                    <!-- Manufacturer Column -->
+                                    <ng-container matColumnDef="manu">
+                                        <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+                                        <td mat-cell *matCellDef="let item">{{item.manu}}</td>
+                                    </ng-container>
+
+                                    <!-- Button Column -->
+                                    <ng-container matColumnDef="controls">
+                                        <th mat-header-cell *matHeaderCellDef>Controls</th>
+                                        <td mat-cell *matCellDef="let item"><button (click)='moreData(item.ndbno)'
+                                                class="btn btn-outline-dark">More</button></td>
+                                    </ng-container>
+
+
+                                    <tr mat-header-row *matHeaderRowDef="searchColumns"></tr>
+                                    <tr mat-row *matRowDef="let item; columns: searchColumns;"></tr>
+                                </table>
+
+                                <!-- <mat-paginator #paginator [length]="dataSource.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
+                            </mat-paginator> -->
+                            </div>
+                        </mat-dialog-content>
+                    </mat-grid-tile>
+
+                    <!-- 1.05 RESULTS TABLE -->
+                    <mat-grid-tile class="border border-success">
+                            <div class="mat-elevation-z8" *ngIf='AllNutrient'>
+
+
+                                <table mat-table #details [dataSource]="AllNutrient.nutrients">
+
+                                    <ng-container matColumnDef="nutrient">
+                                        <th mat-header-cell *matHeaderCellDef>Nutrient</th>
+                                        <td mat-cell *matCellDef="let nut;">{{nut.name}}</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="amount">
+                                        <th mat-header-cell *matHeaderCellDef></th>
+                                        <td mat-cell *matCellDef="let nut">Progress Bar Here</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="percentage">
+                                        <th mat-header-cell *matHeaderCellDef>% of DV</th>
+                                        <td mat-cell *matCellDef="let nut">{{nut.value}}{{nut.unit}}</td>
+
+                                    </ng-container>
+
+
+                                    <ng-container matColumnDef="controls">
+                                        <th mat-header-cell *matHeaderCellDef><button class="btn btn-outline-dark"
+                                                (click)='saveItem(AllNutrient)'>Save</button></th>
+                                        <td mat-cell *matCellDef="let nut"></td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="specificColumns"></tr>
+                                    <tr mat-row *matRowDef="let nut; columns: specificColumns;"></tr>
+
+                                </table>
+                            </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <!--1.05 END OF RESULTS TABLE -->
+            </mat-dialog-content>
+            <mat-dialog-actions>
+                <button mat-button mat-dialog-close>
+                    <mat-icon md-48>close</mat-icon>
+                </button>
+                <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+
+                <button mat-button [mat-dialog-close]="true">
+                    <mat-icon md-48>add_shopping_cart</mat-icon>
+                </button>
+            </mat-dialog-actions>
+
+            <table></table>
+        </mat-card>
+    </div>
+</div>
