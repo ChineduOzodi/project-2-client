@@ -26,7 +26,7 @@ import { ItemDescription } from '../../Models/itemDescription';
         width: 120, transform: 'scale(1.2) translateX(0)', opacity: 1
       })),
       state('fadeIn', style({
-        transform: 'translateX(70%)', opacity: 1
+         opacity: 1
       })),
 
       // To open the book and zoom in when page is switched
@@ -40,6 +40,14 @@ import { ItemDescription } from '../../Models/itemDescription';
           animate('0.2s ease-in', style({
             opacity: 1
           }))
+        ])
+      ]),
+      transition('void => fadeIn', [
+        style({ opacity: 0 }),
+        group([
+          animate('1s 1s ease-in', style({
+            opacity: 1
+          })),
         ])
       ]),
     ])
@@ -98,7 +106,10 @@ export class SearchComponent implements OnInit {
 
     // 1.02.1 activates the 1.02 dropdown menu on load.
     this.fgCats();
+
+    this.openSearchNutri();
   }
+
 
   openSearchNutri() {
     const dialogRef = this.dialog.open(DialogSearchNutriComponent,

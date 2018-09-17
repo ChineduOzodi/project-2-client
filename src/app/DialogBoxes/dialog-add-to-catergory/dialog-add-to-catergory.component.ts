@@ -18,23 +18,24 @@ export class DialogAddToCatergoryComponent implements OnInit {
     console.log('value');
   }
 
-  addCat(category: String) {
-    if (category === '1') {
-      this.snackBar.open('You have added a breakfast item to your list!', '', {
-        duration: 2000,
-      });
-      console.log('1');
-    } else if (category === '2') {
-      this.snackBar.open('You have added a lunch item to your list!', '', {
-        duration: 2000,
-      });
-      console.log('2');
-    } else {
-      this.snackBar.open('You have added a dinner item to your list!', '', {
-        duration: 2000,
-      });
-      console.log('3');
-    }
-
+  addCatOne() {
+    this.snackBar.open('You have added a breakfast item to your list!', '', {
+      duration: 2000,
+    });
+    console.log('1');
   }
+  addCatTwo() {
+    this.snackBar.open('You have added a lunch item to your list!', '', {
+      duration: 2000,
+    });
+    console.log('2');
+  }
+  addCatThree() {
+    this.snackBar.open('You have added a dinner item to your list!', '', {
+      duration: 2000,
+    });
+    console.log('3');
+  }
+
 }
+
