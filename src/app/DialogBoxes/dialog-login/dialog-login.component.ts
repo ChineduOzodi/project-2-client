@@ -23,25 +23,21 @@ export class DialogLoginComponent implements OnInit {
 
   // FORM CONTROLS FOR LOGGING IN:
   loginForm = new FormBuilder().group({
-    email: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.email
+    username: new FormControl('', Validators.compose([
+      Validators.required
     ])),
     password: new FormControl('', Validators.required)
   });
 
-
   // Error types thrown when submissions are incorrect.
   loginValationMessages = {
-    'email': [
-      { type: 'required', message: 'Email is required!' },
-      { type: 'email', message: 'Not a valid email!' }
+    'username': [
+      { type: 'required', message: 'Username is required!' }
     ],
     'password': [
       { type: 'required', message: 'Password is required!' }
     ]
   };
-
 
   constructor(
     public loginSnackBar: MatSnackBar,
@@ -59,7 +55,6 @@ export class DialogLoginComponent implements OnInit {
     if (sessionStorage.getItem('user')) {
       this.userService.user.next(JSON.parse(sessionStorage.getItem('user')));
       this.router.navigate(['userDash']);
-
     }
     /*
     New User Registration message,
@@ -69,7 +64,6 @@ export class DialogLoginComponent implements OnInit {
     if (info) {
       this.infoMessage = info;
     }
-
   }
 
   // user login message
@@ -83,34 +77,37 @@ export class DialogLoginComponent implements OnInit {
 
     // are there any errors present in email or password?
     if (
-this.loginForm.get('email').errors ||
+this.loginForm.get('username').errors ||
 this.loginForm.get('password').errors
 ) { // if so, throw this errorMessage.
         console.log(this.loginForm.get('password').value);
       this.errorMessage = 'Invalid login. Errors present.';
     } else { // no errors? validate user info for login then.
-      const email = this.loginForm.get('email').value;
+      const username = this.loginForm.get('username').value;
       const password = this.loginForm.get('password').value;
 
       // grab a USER ID TOKEN from AWS COGNITO
-      this.cognitoService.signIn(email, password).subscribe(
+      this.cognitoService.signIn(username, password).subscribe(
         response => {
           // checking for a valid response.
           if (response) {
             // if response contains a message, it'll be an error.
             if (response['message']) {
-              this.errorMessage = 'Invalid Credentials';
+              this.errorMessage = response['message'];
+              console.log(response);
               return;
             }
 
             // IF(response) !errors, then get info from user pool.
-
-            this.userService.getUserByEmail(email).subscribe(
+            console.log(response);
+            this.userService.getUserByUsername(username).subscribe(
               user => {
                 if (user) {
                   sessionStorage.setItem('user', JSON.stringify(user));
                   this.userService.user.next(user);
-                  this.router.navigate(['userDash']);
+                  console.log('Logged in and hit database');
+                  this.dialogRef.close('Logged in.');
+                  this.router.navigate(['home']);
                 }
               }
             );
@@ -119,16 +116,6 @@ this.loginForm.get('password').errors
       );
     }
   }
-
-
-
-
-
-
-
-
-
-
 
   redirectMe() {
     this.switchPage();
@@ -155,7 +142,4 @@ this.loginForm.get('password').errors
     this.redirectMe();
 
   }
-
-
-
 }

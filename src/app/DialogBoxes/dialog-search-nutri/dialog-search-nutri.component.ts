@@ -1,3 +1,5 @@
+import { DataSource } from '@angular/cdk/collections';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../Services/data.service';
@@ -40,14 +42,15 @@ import { ItemDescription } from '../../Models/itemDescription';
 export class DialogSearchNutriComponent implements OnInit {
 
   foodgroups: ''; // 1.02 Select Dropdown
-
   itemList: any;
   selectedMeasure: string; // measure for 1.06
   core: Nutrient[];
   AllNutrient: Nutrient[];
   Measures: Measures[];
+
   searchColumns = ['ndbno', 'name', 'manu', 'controls'];
   specificColumns = ['nutrient', 'amount', 'percentage', 'controls'];
+
   foodProfile: ItemDescription;
 
   // User's item
@@ -55,7 +58,6 @@ export class DialogSearchNutriComponent implements OnInit {
 
   acceptableNutrients =
     [601, 307, 291, 205, 204, 203, 208, 269]; // 1.07 Filter Array
-
 
   totalNutrients =
     [539, 269, 208, 203, 204,
@@ -66,7 +68,6 @@ export class DialogSearchNutriComponent implements OnInit {
       418, 578, 318, 320, 323,
       573, 324, 430, 606, 645,
       646, 605, 601]; // Future Implementation of nutrition.
-
 
   constructor(private ds: DataService) { }
 
@@ -108,7 +109,8 @@ export class DialogSearchNutriComponent implements OnInit {
       this.core = this.AllNutrient;
       this.Measures = selected.foods[0].food.nutrients[0].measures;
       this.selectedMeasure = this.Measures[0].label; // measure for 1.06
-console.log(selected.foods[0].food);
+      console.log(selected.foods[0].food);
+
 
     }
     );
@@ -135,5 +137,4 @@ const y = x.nutrient_id;
     }
 
   }
-  
 }

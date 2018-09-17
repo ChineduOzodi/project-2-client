@@ -1,9 +1,6 @@
 import { Nutrient } from './nutrient';
-
 export class ItemDescription {
-
-
-        desc?: {
+          desc?: {
             ndbno?: string;
             name?: string;
             sd?: string;

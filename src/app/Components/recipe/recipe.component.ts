@@ -1,3 +1,4 @@
+import { UserService } from './../../Services/user.service';
 import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
@@ -15,10 +16,10 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
     // animation for the book to enlarge when a button is clicked to navigate to the next page
     trigger('zoomInclosedBook', [
       state('small', style({
-        width: 120, transform: 'scale(1.6) translateX(0)', opacity: 1
+        width: 120, transform: 'scale(1.555) translateX(0)', opacity: 1
       })),
       state('large', style({
-        transform: 'scale(1.2)',
+        transform: 'scale(1.555)',
       })),
 
       // To open the book and zoom in when page is switched
@@ -26,7 +27,7 @@ import { trigger, state, style, animate, transition, group, keyframes, query, st
         style({ width: 10, transform: 'translateX(415px) translateY(-15%)', opacity: 0 }),
         group([
           animate('0.2s 1s ease-in', style({
-            transform: ' scale(1.6) translateX(0)',
+            transform: ' scale(1.555) translateX(0)',
             width: 800
           })),
           animate('0.2s ease-in', style({
@@ -45,9 +46,15 @@ export class RecipeComponent implements OnInit {
   // When the app loads, the state becomes small
   state: String = 'small';
 
-  ngOnInit() {}
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+    ) { }
 
-  constructor(public dialog: MatDialog) { }
+  ngOnInit() {
+    this.userService.verifyUser();
+  }
+
   openSearchNutri() {
     const dialogRef = this.dialog.open(DialogSearchNutriComponent,
       {
@@ -66,9 +73,4 @@ export class RecipeComponent implements OnInit {
 
   }
 
-  zoomOutMe() {
-
-    // this.state = 'small';
-
-  }
 }
