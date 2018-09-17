@@ -1,5 +1,5 @@
 import { DataService } from './../../Services/data.service';
-import { MatDialog } from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { DialogSearchNutriComponent } from './../../DialogBoxes/dialog-search-nutri/dialog-search-nutri.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { loadQueryList } from '@angular/core/src/render3/instructions';
