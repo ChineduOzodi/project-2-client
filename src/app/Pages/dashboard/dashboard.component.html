@@ -25,7 +25,7 @@
                     <mat-card-title>
 
                     </mat-card-title>
-
+                    <span *ngIf="userService.percentProtein || userService.percentCarbs || userService.percentCarbs || userService.percentFiber">
                     <!-- User's Daily Quota -->
                     <mat-card-title class="title">Protein </mat-card-title>
                     <mat-card-subtitle class="subtitle">{{this.userService.totalProtein.toFixed(1)}}/ {{myUser.protein}}g
@@ -51,6 +51,7 @@
                             for now its hard coded -->
                         <mat-progress-bar mode="determinate" value="{{userService.percentFiber}}"></mat-progress-bar>
                     </mat-card-subtitle>
+                    </span>
                 </mat-card-content>
             </mat-card>
 
