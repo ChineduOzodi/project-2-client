@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { Item } from './../Models/item';
-=======
->>>>>>> 8aa4eadd5d2d421c932a8d66e1ef10c743975d53
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
