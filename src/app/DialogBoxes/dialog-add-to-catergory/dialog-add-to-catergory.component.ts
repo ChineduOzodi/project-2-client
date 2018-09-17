@@ -36,6 +36,5 @@ export class DialogAddToCatergoryComponent implements OnInit {
     });
     console.log('3');
   }
-
 }
 
