@@ -71,19 +71,28 @@ export class FoodService {
         this.userService.totalFiber = 0;
         this.userService.totalProtein = 0;
 
+        this.userService.percentCarbs = 0;
+        this.userService.percentFats = 0;
+        this.userService.percentFiber = 0;
+        this.userService.percentProtein = 0;
+
         for ( let i = 0; i < this.userFoods.length; i++) {
           for (let k = 0; k < this.userFoods[i].nutrients.length; k++) {
             if (this.userFoods[i].nutrients[k].nutrient_id === 203) {
               this.userService.totalProtein += this.userFoods[i].nutrients[k].value;
+              this.userService.percentProtein += this.userFoods[i].nutrients[k].value / this.userService.user.value.protein * 100;
             }
             if (this.userFoods[i].nutrients[k].nutrient_id === 205) {
               this.userService.totalCarbs += this.userFoods[i].nutrients[k].value;
+              this.userService.percentCarbs += this.userFoods[i].nutrients[k].value / this.userService.user.value.carbohydrates * 100;
             }
             if (this.userFoods[i].nutrients[k].nutrient_id === 291) {
               this.userService.totalFiber += this.userFoods[i].nutrients[k].value;
+              this.userService.percentFiber += this.userFoods[i].nutrients[k].value / this.userService.user.value.fiber * 100;
             }
             if (this.userFoods[i].nutrients[k].nutrient_id === 204) {
               this.userService.totalFats += this.userFoods[i].nutrients[k].value;
+              this.userService.percentFats += this.userFoods[i].nutrients[k].value / this.userService.user.value.fat * 100;
             }
           }
         }
