@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-dialog-add-to-catergory',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogAddToCatergoryComponent implements OnInit {
 
-  constructor() { }
+  category: number;
+
+  constructor(public addCatSnackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
+  saveCategory() {
+    console.log('value');
+  }
+
+  openSnackBar() {
+    this.addCatSnackBar.open('You have added a breakfast item to your list!', '', {
+      duration: 2000,
+    });
+
+  }
 }

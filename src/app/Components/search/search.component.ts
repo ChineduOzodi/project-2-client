@@ -26,7 +26,7 @@ import { ItemDescription } from '../../Models/itemDescription';
         width: 120, transform: 'scale(1.2) translateX(0)', opacity: 1
       })),
       state('fadeIn', style({
-        opacity: 1
+        transform: 'translateX(70%)', opacity: 1
       })),
 
       // To open the book and zoom in when page is switched
@@ -38,14 +38,6 @@ import { ItemDescription } from '../../Models/itemDescription';
             width: 800
           })),
           animate('0.2s ease-in', style({
-            opacity: 1
-          }))
-        ])
-      ]),
-      transition('void => fadeIn', [
-        style({ opacity: 0 }),
-        group([
-          animate('3s ease-in', style({
             opacity: 1
           }))
         ])
